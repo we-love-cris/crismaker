@@ -20,16 +20,28 @@ int MIN(int a, int b);
 //input, get
 /*
 //문자열을 입력받는 함수. constants.h의 STRING_LENGTH - 1만큼 받을 수 있다.
-//입력에 성공하면 문자열의 길이를, 실패하면 -1을 리턴한다.
+//입력에 성공하면 문자열의 길이('\0'미포함)를, 실패하면 -1을 리턴한다.
 //string은 문자열이 저장될 곳의 주소, length는 입력받을 최대 길이이다('\0' 포함).
 //length는 평소의 상황에서는 STRING_LENGTH를 입력하는 것으로 가정하나,
 //STRING_LENGTH 이하의 임의의 입력이 있는 경우도 처리한다. 즉, STRING_LENGTH가 length의 최대 값이다
+//int a = -1;
+//while(a == -1) {
+//	//optional printf("입력할 문자열을 입력하시오 : ");
+//	a = get_string(...);
+//}
+//이와 같은 용법으로 사용하면 올바른 사용을 할 수 있다.
 */
 int get_string(char* string, int length);
 
 /*
 //양수의 정수와 0을 입력받는 함수. int의 양의 정수의범위 만큼 입력받을 수 있다
 //입력에 실패하면 -1을 리턴한다.
+//int a = -1;
+//while(a == -1) {
+//	//optional printf("입력할 정수를 입력하시오 : ");
+//	a = get_unsigned_int();
+//}
+//이와 같은 용법으로 사용하면 올바른 사용을 할 수 있다.
 */
 int get_unsigned_int();
 

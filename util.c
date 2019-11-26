@@ -5,16 +5,18 @@
 //max와 min을 정의한다
 */
 int MAX(int a, int b) {
-
+	if (a >= b) return a;
+	return b;
 }
 
 int MIN(int a, int b) {
-
+	if (a <= b) return a;
+	return b;
 }
 
 //input, get
 /*
-//string을 입력받는 함수. 문자열의 길이를 return 한다.
+//string을 입력받는 함수. 문자열의 길이('\0' 미포함)를 return 한다.
 //입력받는 데에 실패한 경우, -1을 return 한다.
 //length는 constants.h의 STRING_LENGTH 라고 가정하지만, STRING_LENGTH 이하의 다른 숫자를 입력할 수도 있다.
 //최대값은 STRING_LENGTH이다
@@ -27,10 +29,34 @@ int get_string(char* string, int length) {
 	int i = 0; //루프문에 사용될 값
 	int flag = 0; //오류의 발생 여부를 저장하는 공간
 
+	nowlength = MIN(length, STRING_LENGTH);
 
 	for (i = 0; i < nowlength; i++) {
+		scanf("%c", &temp);
+
+		if (temp == '\n' || temp == '\0') {
+			//엔터 혹은 NULL문자가 들어오는 경우 NULL문자를 저장하고 break하도록 한다.
+			ret[i] = '\0';
+			break;
+		}
 		
+		if (i == nowlength - 1) {
+			//엔터 혹은 NULL문자가 아니었지만 입력이 끝나야 정상이다
+			flag = 1; //-1을 return해야 하므로 flag = 1;
+			i = 0; //버퍼를 비우기 위해 루프를 끝까지 돌려야 한다
+		}
+
+		if (!flag) {
+			//ret[i]에 temp 값 저장
+			ret[i] = temp;
+		}
 	}
+
+	if (flag) { //범위를 초과한 경우
+		printf("입력 범위를 초과하였습니다.\n");
+		return -1;
+	}
+	return i; //for루프의 n번째까지 문자이고(n - 1번째 루프), n + 1번째(n번째)가 '\n'인 경우, i = n인 상태에서 break;되었을 것이다
 }
 
 /*
@@ -64,10 +90,10 @@ int get_unsigned_int() {
 		//flag == 1이라면, 이미 오류 값을 return해야 하는 상황이다.
 		//temp값을 처리하는 과정은 무의미하다.
 		//if(flag) continue; 를 넣어도 되지만, continue를 최 교수님이 안 좋아하시기에,
-		//if 문 앞에 !temp &&를 추가하도록 한다.
+		//if 문 앞에 !flag &&를 추가하도록 한다.
 		*/
 
-		if (!temp && '0' <= temp && temp <= '9') {
+		if (!flag && '0' <= temp && temp <= '9') {
 			ret *= 10;
 			ret += (temp - '0');
 			//overflow가 발생하는 지 확인하는 과정이 필요하다
@@ -78,7 +104,7 @@ int get_unsigned_int() {
 		}
 		
 		if (flag) {
-			printf("올바른 정수를 입력해 주세요."); //오류 메시지 출력(필요에 따라 수정해야할 수 있음)
+			printf("올바른 정수를 입력해 주세요.\n"); //오류 메시지 출력(필요에 따라 수정해야할 수 있음)
 			return -1; //오류가 발생했으면 -1 return
 		}
 		return ret; //제대로 입력되었으면 1 return

@@ -26,6 +26,9 @@ int get_unsigned_int() {
 			ret *= 10;
 			ret += temp - '0';
 		}
+		if (temp == '\n') {
+
+		}
 	}
 }
 

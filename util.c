@@ -102,13 +102,13 @@ int get_unsigned_int() {
 			//'\n'도, '\0'도, 0~9의 문자도 아닌 경우
 			flag = 1;
 		}
-		
-		if (flag) {
-			printf("올바른 정수를 입력해 주세요.\n"); //오류 메시지 출력(필요에 따라 수정해야할 수 있음)
-			return -1; //오류가 발생했으면 -1 return
-		}
-		return ret; //제대로 입력되었으면 1 return
 	}
+
+	if (flag) {
+		printf("올바른 정수를 입력해 주세요.\n"); //오류 메시지 출력(필요에 따라 수정해야할 수 있음)
+		return -1; //오류가 발생했으면 -1 return
+	}
+	return ret; //제대로 입력되었으면 1 return
 }
 
 // sorting

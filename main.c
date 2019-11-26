@@ -3,6 +3,9 @@
 
 int main(void) {
 	//구조체들 선언
+	player_p choi;
+	student std1, std2, std3, std4, std5, std6, std7, std8, std9, std10, std11, std12;
+	prof pp;
 
 	//선언 이후의 초기화
 

@@ -20,6 +20,7 @@ typedef struct student {// 최교수님이 되어 만날 학생들
 	int type; //1이면 학생, 플레이어가 아니면 2
 	int attend_rate; //출셕률
 	int skill; //실력, 질문할 확률
+	int move; //행동력
 	char* name;
 	int attend_count; //출석 횟수
 	int progress; //따라간 진도

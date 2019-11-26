@@ -53,7 +53,13 @@ typedef struct Day {
 
 typedef struct now_status {//현재 학교의 상황
 	//선언 메모리 관리 해주기
-	student student_list[STD_AMOUNT]; //출석부, 학생을 12명 할 예정. 가나다순으로 정렬해 보자(가능?)
-	day academic_calender[ACADEMIC_WEEK]; //학사 일정, 총 8주차일 예정
+	student* student_list; //출석부, 학생을 12명 할 예정. 가나다순으로 정렬해 보자(가능?)
+	day* academic_calender; //학사 일정, 총 8주차일 예정
 	int week; //현재 몇 주차인지, week < ACADEMIC_WEEK
+	int std_no; //학생 모드일 경우 자신의 출석 번호(0 ~ STD_AMOUNT - 1)
+	player_p* choi; //교수 모드일 경우의 교수
+	prof* pp; //학생 모드일 경우의 교수
+	int type; //현재 모드 0 : 교수 모드, 1 : 학생 모드
+
+
 } status;

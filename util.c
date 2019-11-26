@@ -1,13 +1,36 @@
 #include "util.h"
 
+//max, min
+/*
+//max와 min을 정의한다
+*/
+int MAX(int a, int b) {
+
+}
+
+int MIN(int a, int b) {
+
+}
+
 //input, get
 /*
 //string을 입력받는 함수. 문자열의 길이를 return 한다.
 //입력받는 데에 실패한 경우, -1을 return 한다.
-//constants.h의 STRING_LENGTH - 1만큼 입력받을 수 있다
+//length는 constants.h의 STRING_LENGTH 라고 가정하지만, STRING_LENGTH 이하의 다른 숫자를 입력할 수도 있다.
+//최대값은 STRING_LENGTH이다
+//string은 입력받은 문자열이 저장될 주소, length는 '\0'을 포함한 string의 길이이다
 */
-int get_string() {
+int get_string(char* string, int length) {
+	char ret[STRING_LENGTH] = ""; //입력받은 문자열이 저장되는 임시 저장소
+	char temp = '0'; //임시로 입력받은 저장 공간
+	int nowlength = 0; //min(length, STRING_LENGTH);
+	int i = 0; //루프문에 사용될 값
+	int flag = 0; //오류의 발생 여부를 저장하는 공간
 
+
+	for (i = 0; i < nowlength; i++) {
+		
+	}
 }
 
 /*

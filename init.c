@@ -3,7 +3,7 @@
 void init_status(status* game) {
 	game = (status*)malloc(sizeof(status));
 	make_status(game);
-
+	
 
 	return;
 }

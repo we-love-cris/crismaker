@@ -1,6 +1,7 @@
-#include "init.h"
 #include "declare.h"
 #include "util.h"
+#include "init.h"
+
 
 int main(void) {
 	//구조체들 선언
@@ -10,6 +11,8 @@ int main(void) {
 	//선언 이후의 초기화
 	make_player_p(&gg);
 	init_status(&game);
+	int a = get_unsigned_int();
+	printf("%d", a);
 
 	//게임 시작
 

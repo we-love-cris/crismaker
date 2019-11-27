@@ -18,7 +18,7 @@ void make_student(student* std) {
 	std->tired = 0;
 	std->type = 2;
 
-	std->name = "";
+	std->name = NULL;
 }
 void make_player_p(player_p* choi) {
 	choi->assignment = 0;
@@ -28,14 +28,14 @@ void make_player_p(player_p* choi) {
 	choi->test = 0;
 	choi->type = 0;
 
-	choi->name = "";
+	choi->name = NULL;
 }
 void make_prof(prof* pp) {
 	pp->chat_rate = 0;
 	pp->progress_rate = 0;
 	pp->type = 0;
 
-	pp->name = "";
+	pp->name = NULL;
 }
 void make_day(day* wk) {
 	wk->attend_rate = 0;

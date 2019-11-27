@@ -9,6 +9,7 @@ int MAX(int a, int b) {
 	return b;
 }
 
+//a와 b중 더 작은 수를 반환
 int MIN(int a, int b) {
 	if (a <= b) return a;
 	return b;
@@ -23,10 +24,10 @@ int MIN(int a, int b) {
 //string은 입력받은 문자열이 저장될 주소, length는 '\0'을 포함한 string의 길이이다
 */
 int get_string(char* string, int length) {
-	char ret[STRING_LENGTH] = ""; //입력받은 문자열이 저장되는 임시 저장소
+	char ret[STRING_LENGTH] = { '\0', }; //입력받은 문자열이 저장되는 임시 저장소
 	char temp = '0'; //임시로 입력받은 저장 공간
 	int nowlength = 0; //min(length, STRING_LENGTH);
-	int i = 0; //루프문에 사용될 값
+	int i = 0, j = 0; //루프문에 사용될 값
 	int flag = 0; //오류의 발생 여부를 저장하는 공간
 
 	nowlength = MIN(length, STRING_LENGTH);
@@ -56,6 +57,10 @@ int get_string(char* string, int length) {
 		printf("입력 범위를 초과하였습니다.\n");
 		return -1;
 	}
+	for (j = 0; j <= i; j++) {
+		string[j] = ret[j];
+	}
+
 	return i; //for루프의 n번째까지 문자이고(n - 1번째 루프), n + 1번째(n번째)가 '\n'인 경우, i = n인 상태에서 break;되었을 것이다
 }
 

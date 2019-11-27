@@ -1,13 +1,15 @@
+#include "init.h"
 #include "declare.h"
 #include "util.h"
-#include "init.h"
 
 int main(void) {
 	//구조체들 선언
 	status game;
+	player_p gg;
 
 	//선언 이후의 초기화
-	status_init(&game);
+	make_player_p(&gg);
+	init_status(&game);
 
 	//게임 시작
 
@@ -23,4 +25,7 @@ int main(void) {
 	//학사 관련 정보 입력
 
 	//게임 플레이
+
+	system("pause");
+	return 0;
 }

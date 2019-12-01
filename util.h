@@ -1,4 +1,4 @@
-#pragma once
+﻿#pragma once
 
 //기본 라이브러리 및 상수값, 구조체 include
 #include "declare.h"

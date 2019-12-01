@@ -1,4 +1,4 @@
-#include "domain.h"
+﻿#include "domain.h"
 
 int select_main_menu(int amount) {
 	int ret = 0;

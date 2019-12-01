@@ -1,4 +1,4 @@
-#include "init.h"
+﻿#include "init.h"
 
 status* init_status() {
 	status* game;

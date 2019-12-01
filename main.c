@@ -1,4 +1,4 @@
-#include "declare.h"
+﻿#include "declare.h"
 #include "util.h"
 #include "init.h"
 #include "view.h"
@@ -57,5 +57,7 @@ int main(void) {
 
 	}
 	gotoxy(0, 0);
+
+	system("pause");
 	return 0;
 }

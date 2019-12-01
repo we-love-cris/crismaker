@@ -1,4 +1,4 @@
-#pragma once
+﻿#pragma once
 //선언된 공용 라이브러리
 #include <stdio.h>
 #include <stdlib.h>

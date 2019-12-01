@@ -1,17 +1,17 @@
 #pragma once
 
-//±âº» ¶óÀÌºê·¯¸® ¹× »ó¼ö°ª, ±¸Á¶Ã¼ include
+//ê¸°ë³¸ ë¼ì´ë¸ŒëŸ¬ë¦¬ ë° ìƒìˆ˜ê°’, êµ¬ì¡°ì²´ include
 #include "declare.h"
 
 /*
-//util.h ´Â ¿©·¯ ±â´ÉÀ» ´ã°í ÀÖ´Â Çì´õ´Ù
-//ÁÖ·Î ÄÚµå¸¦ ¾Æ³¢°Å³ª ¾Ë°í¸®ÁòÀ» ¼öÇàÇÒ µí
+//util.h ëŠ” ì—¬ëŸ¬ ê¸°ëŠ¥ì„ ë‹´ê³  ìžˆëŠ” í—¤ë”ë‹¤
+//ì£¼ë¡œ ì½”ë“œë¥¼ ì•„ë¼ê±°ë‚˜ ì•Œê³ ë¦¬ì¦˜ì„ ìˆ˜í–‰í•  ë“¯
 */
 
 
 //max, min
 /*
-//max¿Í minÀ» Á¤ÀÇÇÑ´Ù
+//maxì™€ minì„ ì •ì˜í•œë‹¤
 */
 int MAX(int a, int b);
 int MIN(int a, int b);
@@ -19,29 +19,29 @@ int MIN(int a, int b);
 
 //input, get
 /*
-//¹®ÀÚ¿­À» ÀÔ·Â¹Þ´Â ÇÔ¼ö. constants.hÀÇ STRING_LENGTH - 1¸¸Å­ ¹ÞÀ» ¼ö ÀÖ´Ù.
-//ÀÔ·Â¿¡ ¼º°øÇÏ¸é ¹®ÀÚ¿­ÀÇ ±æÀÌ('\0'¹ÌÆ÷ÇÔ)¸¦, ½ÇÆÐÇÏ¸é -1À» ¸®ÅÏÇÑ´Ù.
-//stringÀº ¹®ÀÚ¿­ÀÌ ÀúÀåµÉ °÷ÀÇ ÁÖ¼Ò, length´Â ÀÔ·Â¹ÞÀ» ÃÖ´ë ±æÀÌÀÌ´Ù('\0' Æ÷ÇÔ).
-//length´Â Æò¼ÒÀÇ »óÈ²¿¡¼­´Â STRING_LENGTH¸¦ ÀÔ·ÂÇÏ´Â °ÍÀ¸·Î °¡Á¤ÇÏ³ª,
-//STRING_LENGTH ÀÌÇÏÀÇ ÀÓÀÇÀÇ ÀÔ·ÂÀÌ ÀÖ´Â °æ¿ìµµ Ã³¸®ÇÑ´Ù. Áï, STRING_LENGTH°¡ lengthÀÇ ÃÖ´ë °ªÀÌ´Ù
+//ë¬¸ìžì—´ì„ ìž…ë ¥ë°›ëŠ” í•¨ìˆ˜. constants.hì˜ STRING_LENGTH - 1ë§Œí¼ ë°›ì„ ìˆ˜ ìžˆë‹¤.
+//ìž…ë ¥ì— ì„±ê³µí•˜ë©´ ë¬¸ìžì—´ì˜ ê¸¸ì´('\0'ë¯¸í¬í•¨)ë¥¼, ì‹¤íŒ¨í•˜ë©´ -1ì„ ë¦¬í„´í•œë‹¤.
+//stringì€ ë¬¸ìžì—´ì´ ì €ìž¥ë  ê³³ì˜ ì£¼ì†Œ, lengthëŠ” ìž…ë ¥ë°›ì„ ìµœëŒ€ ê¸¸ì´ì´ë‹¤('\0' í¬í•¨).
+//lengthëŠ” í‰ì†Œì˜ ìƒí™©ì—ì„œëŠ” STRING_LENGTHë¥¼ ìž…ë ¥í•˜ëŠ” ê²ƒìœ¼ë¡œ ê°€ì •í•˜ë‚˜,
+//STRING_LENGTH ì´í•˜ì˜ ìž„ì˜ì˜ ìž…ë ¥ì´ ìžˆëŠ” ê²½ìš°ë„ ì²˜ë¦¬í•œë‹¤. ì¦‰, STRING_LENGTHê°€ lengthì˜ ìµœëŒ€ ê°’ì´ë‹¤
 //int a = -1;
 //while(a == -1) {
-//	//optional printf("ÀÔ·ÂÇÒ ¹®ÀÚ¿­À» ÀÔ·ÂÇÏ½Ã¿À : ");
+//	//optional printf("ìž…ë ¥í•  ë¬¸ìžì—´ì„ ìž…ë ¥í•˜ì‹œì˜¤ : ");
 //	a = get_string(...);
 //}
-//ÀÌ¿Í °°Àº ¿ë¹ýÀ¸·Î »ç¿ëÇÏ¸é ¿Ã¹Ù¸¥ »ç¿ëÀ» ÇÒ ¼ö ÀÖ´Ù.
+//ì´ì™€ ê°™ì€ ìš©ë²•ìœ¼ë¡œ ì‚¬ìš©í•˜ë©´ ì˜¬ë°”ë¥¸ ì‚¬ìš©ì„ í•  ìˆ˜ ìžˆë‹¤.
 */
 int get_string(char* string, int length);
 
 /*
-//¾ç¼öÀÇ Á¤¼ö¿Í 0À» ÀÔ·Â¹Þ´Â ÇÔ¼ö. intÀÇ ¾çÀÇ Á¤¼öÀÇ¹üÀ§ ¸¸Å­ ÀÔ·Â¹ÞÀ» ¼ö ÀÖ´Ù
-//ÀÔ·Â¿¡ ½ÇÆÐÇÏ¸é -1À» ¸®ÅÏÇÑ´Ù.
+//ì–‘ìˆ˜ì˜ ì •ìˆ˜ì™€ 0ì„ ìž…ë ¥ë°›ëŠ” í•¨ìˆ˜. intì˜ ì–‘ì˜ ì •ìˆ˜ì˜ë²”ìœ„ ë§Œí¼ ìž…ë ¥ë°›ì„ ìˆ˜ ìžˆë‹¤
+//ìž…ë ¥ì— ì‹¤íŒ¨í•˜ë©´ -1ì„ ë¦¬í„´í•œë‹¤.
 //int a = -1;
 //while(a == -1) {
-//	//optional printf("ÀÔ·ÂÇÒ Á¤¼ö¸¦ ÀÔ·ÂÇÏ½Ã¿À : ");
+//	//optional printf("ìž…ë ¥í•  ì •ìˆ˜ë¥¼ ìž…ë ¥í•˜ì‹œì˜¤ : ");
 //	a = get_unsigned_int();
 //}
-//ÀÌ¿Í °°Àº ¿ë¹ýÀ¸·Î »ç¿ëÇÏ¸é ¿Ã¹Ù¸¥ »ç¿ëÀ» ÇÒ ¼ö ÀÖ´Ù.
+//ì´ì™€ ê°™ì€ ìš©ë²•ìœ¼ë¡œ ì‚¬ìš©í•˜ë©´ ì˜¬ë°”ë¥¸ ì‚¬ìš©ì„ í•  ìˆ˜ ìžˆë‹¤.
 */
 int get_unsigned_int();
 
@@ -49,4 +49,6 @@ int get_unsigned_int();
 
 
 // sorting
-int hangeul_sort(); //ÇÑ±ÛÀ» Á¤·ÄÇÏ´Â ÇÔ¼ö, ÇÐ»ý »ý¼º ÈÄ Ãâ¼®ºÎ¿¡ ³ÖÀ» ¶§ ÀÌ¿ëÇÒ ¿¹Á¤
+int hangeul_sort(); //í•œê¸€ì„ ì •ë ¬í•˜ëŠ” í•¨ìˆ˜, í•™ìƒ ìƒì„± í›„ ì¶œì„ë¶€ì— ë„£ì„ ë•Œ ì´ìš©í•  ì˜ˆì •#pragma once
+
+void gotoxy(int x, int y);

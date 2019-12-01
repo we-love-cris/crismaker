@@ -2,14 +2,14 @@
 
 //max, min
 /*
-//max¿Í minÀ» Á¤ÀÇÇÑ´Ù
+//maxì™€ minì„ ì •ì˜í•œë‹¤
 */
 int MAX(int a, int b) {
 	if (a >= b) return a;
 	return b;
 }
 
-//a¿Í bÁß ´õ ÀÛÀº ¼ö¸¦ ¹ÝÈ¯
+//aì™€ bì¤‘ ë” ìž‘ì€ ìˆ˜ë¥¼ ë°˜í™˜
 int MIN(int a, int b) {
 	if (a <= b) return a;
 	return b;
@@ -17,18 +17,18 @@ int MIN(int a, int b) {
 
 //input, get
 /*
-//stringÀ» ÀÔ·Â¹Þ´Â ÇÔ¼ö. ¹®ÀÚ¿­ÀÇ ±æÀÌ('\0' ¹ÌÆ÷ÇÔ)¸¦ return ÇÑ´Ù.
-//ÀÔ·Â¹Þ´Â µ¥¿¡ ½ÇÆÐÇÑ °æ¿ì, -1À» return ÇÑ´Ù.
-//length´Â constants.hÀÇ STRING_LENGTH ¶ó°í °¡Á¤ÇÏÁö¸¸, STRING_LENGTH ÀÌÇÏÀÇ ´Ù¸¥ ¼ýÀÚ¸¦ ÀÔ·ÂÇÒ ¼öµµ ÀÖ´Ù.
-//ÃÖ´ë°ªÀº STRING_LENGTHÀÌ´Ù
-//stringÀº ÀÔ·Â¹ÞÀº ¹®ÀÚ¿­ÀÌ ÀúÀåµÉ ÁÖ¼Ò, length´Â '\0'À» Æ÷ÇÔÇÑ stringÀÇ ±æÀÌÀÌ´Ù
+//stringì„ ìž…ë ¥ë°›ëŠ” í•¨ìˆ˜. ë¬¸ìžì—´ì˜ ê¸¸ì´('\0' ë¯¸í¬í•¨)ë¥¼ return í•œë‹¤.
+//ìž…ë ¥ë°›ëŠ” ë°ì— ì‹¤íŒ¨í•œ ê²½ìš°, -1ì„ return í•œë‹¤.
+//lengthëŠ” constants.hì˜ STRING_LENGTH ë¼ê³  ê°€ì •í•˜ì§€ë§Œ, STRING_LENGTH ì´í•˜ì˜ ë‹¤ë¥¸ ìˆ«ìžë¥¼ ìž…ë ¥í•  ìˆ˜ë„ ìžˆë‹¤.
+//ìµœëŒ€ê°’ì€ STRING_LENGTHì´ë‹¤
+//stringì€ ìž…ë ¥ë°›ì€ ë¬¸ìžì—´ì´ ì €ìž¥ë  ì£¼ì†Œ, lengthëŠ” '\0'ì„ í¬í•¨í•œ stringì˜ ê¸¸ì´ì´ë‹¤
 */
 int get_string(char* string, int length) {
-	char ret[STRING_LENGTH] = { '\0', }; //ÀÔ·Â¹ÞÀº ¹®ÀÚ¿­ÀÌ ÀúÀåµÇ´Â ÀÓ½Ã ÀúÀå¼Ò
-	char temp = '0'; //ÀÓ½Ã·Î ÀÔ·Â¹ÞÀº ÀúÀå °ø°£
+	char ret[STRING_LENGTH] = { '\0', }; //ìž…ë ¥ë°›ì€ ë¬¸ìžì—´ì´ ì €ìž¥ë˜ëŠ” ìž„ì‹œ ì €ìž¥ì†Œ
+	char temp = '0'; //ìž„ì‹œë¡œ ìž…ë ¥ë°›ì€ ì €ìž¥ ê³µê°„
 	int nowlength = 0; //min(length, STRING_LENGTH);
-	int i = 0, j = 0; //·çÇÁ¹®¿¡ »ç¿ëµÉ °ª
-	int flag = 0; //¿À·ùÀÇ ¹ß»ý ¿©ºÎ¸¦ ÀúÀåÇÏ´Â °ø°£
+	int i = 0, j = 0; //ë£¨í”„ë¬¸ì— ì‚¬ìš©ë  ê°’
+	int flag = 0; //ì˜¤ë¥˜ì˜ ë°œìƒ ì—¬ë¶€ë¥¼ ì €ìž¥í•˜ëŠ” ê³µê°„
 
 	nowlength = MIN(length, STRING_LENGTH);
 
@@ -36,88 +36,93 @@ int get_string(char* string, int length) {
 		scanf("%c", &temp);
 
 		if (temp == '\n' || temp == '\0') {
-			//¿£ÅÍ È¤Àº NULL¹®ÀÚ°¡ µé¾î¿À´Â °æ¿ì NULL¹®ÀÚ¸¦ ÀúÀåÇÏ°í breakÇÏµµ·Ï ÇÑ´Ù.
+			//ì—”í„° í˜¹ì€ NULLë¬¸ìžê°€ ë“¤ì–´ì˜¤ëŠ” ê²½ìš° NULLë¬¸ìžë¥¼ ì €ìž¥í•˜ê³  breakí•˜ë„ë¡ í•œë‹¤.
 			ret[i] = '\0';
 			break;
 		}
-		
+
 		if (i == nowlength - 1) {
-			//¿£ÅÍ È¤Àº NULL¹®ÀÚ°¡ ¾Æ´Ï¾úÁö¸¸ ÀÔ·ÂÀÌ ³¡³ª¾ß Á¤»óÀÌ´Ù
-			flag = 1; //-1À» returnÇØ¾ß ÇÏ¹Ç·Î flag = 1;
-			i = 0; //¹öÆÛ¸¦ ºñ¿ì±â À§ÇØ ·çÇÁ¸¦ ³¡±îÁö µ¹·Á¾ß ÇÑ´Ù
+			//ì—”í„° í˜¹ì€ NULLë¬¸ìžê°€ ì•„ë‹ˆì—ˆì§€ë§Œ ìž…ë ¥ì´ ëë‚˜ì•¼ ì •ìƒì´ë‹¤
+			flag = 1; //-1ì„ returní•´ì•¼ í•˜ë¯€ë¡œ flag = 1;
+			i = 0; //ë²„í¼ë¥¼ ë¹„ìš°ê¸° ìœ„í•´ ë£¨í”„ë¥¼ ëê¹Œì§€ ëŒë ¤ì•¼ í•œë‹¤
 		}
 
 		if (!flag) {
-			//ret[i]¿¡ temp °ª ÀúÀå
+			//ret[i]ì— temp ê°’ ì €ìž¥
 			ret[i] = temp;
 		}
 	}
 
-	if (flag) { //¹üÀ§¸¦ ÃÊ°úÇÑ °æ¿ì
-		printf("ÀÔ·Â ¹üÀ§¸¦ ÃÊ°úÇÏ¿´½À´Ï´Ù.\n");
+	if (flag) { //ë²”ìœ„ë¥¼ ì´ˆê³¼í•œ ê²½ìš°
+		printf("ìž…ë ¥ ë²”ìœ„ë¥¼ ì´ˆê³¼í•˜ì˜€ìŠµë‹ˆë‹¤.\n");
 		return -1;
 	}
 	for (j = 0; j <= i; j++) {
 		string[j] = ret[j];
 	}
 
-	return i; //for·çÇÁÀÇ n¹øÂ°±îÁö ¹®ÀÚÀÌ°í(n - 1¹øÂ° ·çÇÁ), n + 1¹øÂ°(n¹øÂ°)°¡ '\n'ÀÎ °æ¿ì, i = nÀÎ »óÅÂ¿¡¼­ break;µÇ¾úÀ» °ÍÀÌ´Ù
+	return i; //forë£¨í”„ì˜ në²ˆì§¸ê¹Œì§€ ë¬¸ìžì´ê³ (n - 1ë²ˆì§¸ ë£¨í”„), n + 1ë²ˆì§¸(në²ˆì§¸)ê°€ '\n'ì¸ ê²½ìš°, i = nì¸ ìƒíƒœì—ì„œ break;ë˜ì—ˆì„ ê²ƒì´ë‹¤
 }
 
 /*
-//¾ç¼öÀÇ Á¤¼ö¸¦ ÀÔ·Â¹Þ´Â ÇÔ¼ö
-//intÀÇ ¹üÀ§ Áß ¾ç¼ö¸¸Å­ ÀÔ·Â¹ÞÀ» ¼ö ÀÖ´Ù(0 ~ 2^31 - 1)
-//ÀÔ·Â¿¡ ½ÇÆÐÇÏ¸é -1À» ¸®ÅÏÇÑ´Ù
-//charÀ» 1°³¾¿ scanfÇÏ¿© ¹öÆÛ ¹®Á¦¸¦ ÇØ°áÇÒ ¼ö ÀÖ´Ù.
+//ì–‘ìˆ˜ì˜ ì •ìˆ˜ë¥¼ ìž…ë ¥ë°›ëŠ” í•¨ìˆ˜
+//intì˜ ë²”ìœ„ ì¤‘ ì–‘ìˆ˜ë§Œí¼ ìž…ë ¥ë°›ì„ ìˆ˜ ìžˆë‹¤(0 ~ 2^31 - 1)
+//ìž…ë ¥ì— ì‹¤íŒ¨í•˜ë©´ -1ì„ ë¦¬í„´í•œë‹¤
+//charì„ 1ê°œì”© scanfí•˜ì—¬ ë²„í¼ ë¬¸ì œë¥¼ í•´ê²°í•  ìˆ˜ ìžˆë‹¤.
 */
 int get_unsigned_int() {
-	char temp = '0'; //ÀÓ½Ã·Î ÀÔ·Â¹ÞÀ» ÀúÀå °ø°£
-	int ret = 0; //¸®ÅÏµÉ Á¤¼ö
-	int i = 0; //·çÇÁ¹®¿¡ »ç¿ëµÉ °ª
-	int flag = 0; //int¹üÀ§¸¦ ³Ñ¾î°¡°Å³ª, 0~9ÀÇ ¼ýÀÚ°¡ ÀÔ·ÂµÇ¾úÀ¸¸é 1ÀÌ µÈ´Ù.
+	char temp = '0'; //ìž„ì‹œë¡œ ìž…ë ¥ë°›ì„ ì €ìž¥ ê³µê°„
+	int ret = 0; //ë¦¬í„´ë  ì •ìˆ˜
+	int i = 0; //ë£¨í”„ë¬¸ì— ì‚¬ìš©ë  ê°’
+	int flag = 0; //intë²”ìœ„ë¥¼ ë„˜ì–´ê°€ê±°ë‚˜, 0~9ì˜ ìˆ«ìžê°€ ìž…ë ¥ë˜ì—ˆìœ¼ë©´ 1ì´ ëœë‹¤.
 
 	for (i = 0; i < 11; i++) {
 		scanf("%c", &temp);
 		if (temp == '\n' || temp == '\0') {
-			//¿£ÅÍ°¡ µé¾î¿À¸é ÀÔ·Â ³¡
-			//null¹®ÀÚ°¡ µé¾î¿À´Â °æ¿ìµµ »óÁ¤ÇØ º¸¾Ò´Ù...?
+			//ì—”í„°ê°€ ë“¤ì–´ì˜¤ë©´ ìž…ë ¥ ë
+			//nullë¬¸ìžê°€ ë“¤ì–´ì˜¤ëŠ” ê²½ìš°ë„ ìƒì •í•´ ë³´ì•˜ë‹¤...?
 			break;
 		}
 
 		if (i == 10) {
-			//11¹øÂ° ÀÔ·ÂÀÌÁö¸¸, '\n'ÀÌ ¾Æ´Ï¾ú´Ù.
-			//11¹øÂ°ÀÇ ÀÔ·ÂÀÌ ¼ýÀÚ¶ó°í ÇÏ´õ¶óµµ intÀÇ ¹üÀ§¸¦ ³Ñ¾î°£´Ù
-			flag = 1; //±×·¡¼­ -1À» ¸®ÅÏÇØ¾ß ÇÑ´Ù -> flag = 1
-			i = 0; //i¸¦ 0À¸·Î ¸¸µé¾î¼­, for·çÇÁ¸¦ µ¹·Á buffer¸¦ ºñ¿ì´Â °úÁ¤
+			//11ë²ˆì§¸ ìž…ë ¥ì´ì§€ë§Œ, '\n'ì´ ì•„ë‹ˆì—ˆë‹¤.
+			//11ë²ˆì§¸ì˜ ìž…ë ¥ì´ ìˆ«ìžë¼ê³  í•˜ë”ë¼ë„ intì˜ ë²”ìœ„ë¥¼ ë„˜ì–´ê°„ë‹¤
+			flag = 1; //ê·¸ëž˜ì„œ -1ì„ ë¦¬í„´í•´ì•¼ í•œë‹¤ -> flag = 1
+			i = 0; //ië¥¼ 0ìœ¼ë¡œ ë§Œë“¤ì–´ì„œ, forë£¨í”„ë¥¼ ëŒë ¤ bufferë¥¼ ë¹„ìš°ëŠ” ê³¼ì •
 		}
 
 		/*
-		//flag == 1ÀÌ¶ó¸é, ÀÌ¹Ì ¿À·ù °ªÀ» returnÇØ¾ß ÇÏ´Â »óÈ²ÀÌ´Ù.
-		//temp°ªÀ» Ã³¸®ÇÏ´Â °úÁ¤Àº ¹«ÀÇ¹ÌÇÏ´Ù.
-		//if(flag) continue; ¸¦ ³Ö¾îµµ µÇÁö¸¸, continue¸¦ ÃÖ ±³¼ö´ÔÀÌ ¾È ÁÁ¾ÆÇÏ½Ã±â¿¡,
-		//if ¹® ¾Õ¿¡ !flag &&¸¦ Ãß°¡ÇÏµµ·Ï ÇÑ´Ù.
+		//flag == 1ì´ë¼ë©´, ì´ë¯¸ ì˜¤ë¥˜ ê°’ì„ returní•´ì•¼ í•˜ëŠ” ìƒí™©ì´ë‹¤.
+		//tempê°’ì„ ì²˜ë¦¬í•˜ëŠ” ê³¼ì •ì€ ë¬´ì˜ë¯¸í•˜ë‹¤.
+		//if(flag) continue; ë¥¼ ë„£ì–´ë„ ë˜ì§€ë§Œ, continueë¥¼ ìµœ êµìˆ˜ë‹˜ì´ ì•ˆ ì¢‹ì•„í•˜ì‹œê¸°ì—,
+		//if ë¬¸ ì•žì— !flag &&ë¥¼ ì¶”ê°€í•˜ë„ë¡ í•œë‹¤.
 		*/
 
 		if (!flag && '0' <= temp && temp <= '9') {
 			ret *= 10;
 			ret += (temp - '0');
-			//overflow°¡ ¹ß»ýÇÏ´Â Áö È®ÀÎÇÏ´Â °úÁ¤ÀÌ ÇÊ¿äÇÏ´Ù
+			//overflowê°€ ë°œìƒí•˜ëŠ” ì§€ í™•ì¸í•˜ëŠ” ê³¼ì •ì´ í•„ìš”í•˜ë‹¤
 		}
 		else {
-			//'\n'µµ, '\0'µµ, 0~9ÀÇ ¹®ÀÚµµ ¾Æ´Ñ °æ¿ì
+			//'\n'ë„, '\0'ë„, 0~9ì˜ ë¬¸ìžë„ ì•„ë‹Œ ê²½ìš°
 			flag = 1;
 		}
 	}
 
 	if (flag) {
-		printf("¿Ã¹Ù¸¥ Á¤¼ö¸¦ ÀÔ·ÂÇØ ÁÖ¼¼¿ä.\n"); //¿À·ù ¸Þ½ÃÁö Ãâ·Â(ÇÊ¿ä¿¡ µû¶ó ¼öÁ¤ÇØ¾ßÇÒ ¼ö ÀÖÀ½)
-		return -1; //¿À·ù°¡ ¹ß»ýÇßÀ¸¸é -1 return
+		printf("ì˜¬ë°”ë¥¸ ì •ìˆ˜ë¥¼ ìž…ë ¥í•´ ì£¼ì„¸ìš”.\n"); //ì˜¤ë¥˜ ë©”ì‹œì§€ ì¶œë ¥(í•„ìš”ì— ë”°ë¼ ìˆ˜ì •í•´ì•¼í•  ìˆ˜ ìžˆìŒ)
+		return -1; //ì˜¤ë¥˜ê°€ ë°œìƒí–ˆìœ¼ë©´ -1 return
 	}
-	return ret; //Á¦´ë·Î ÀÔ·ÂµÇ¾úÀ¸¸é 1 return
+	return ret; //ì œëŒ€ë¡œ ìž…ë ¥ë˜ì—ˆìœ¼ë©´ 1 return
 }
 
 // sorting
-//ÇÑ±ÛÀ» Á¤·ÄÇÏ´Â ÇÔ¼ö, ÇÐ»ý »ý¼º ÈÄ Ãâ¼®ºÎ¿¡ ³ÖÀ» ¶§ ÀÌ¿ëÇÒ ¿¹Á¤
+//í•œê¸€ì„ ì •ë ¬í•˜ëŠ” í•¨ìˆ˜, í•™ìƒ ìƒì„± í›„ ì¶œì„ë¶€ì— ë„£ì„ ë•Œ ì´ìš©í•  ì˜ˆì •
 int hangeul_sort() {
 
+}
+
+void gotoxy(int x, int y) {
+	COORD pos = { x,y };
+	SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), pos);
 }

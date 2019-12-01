@@ -82,6 +82,6 @@ typedef struct now_status {//현재 학교의 상황
 
 	student** student_list; //출석부, 학생을 12명 할 예정. 가나다순으로 정렬해 보자(가능?)
 
-	func func_list;
+	func func_list; //함수 포인터 리스트
 
 } status;

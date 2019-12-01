@@ -15,6 +15,9 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="acad_day.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
     <ClInclude Include="constants.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
@@ -35,6 +38,9 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="acad_day.c">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
     <ClCompile Include="domain.c">
       <Filter>소스 파일</Filter>
     </ClCompile>

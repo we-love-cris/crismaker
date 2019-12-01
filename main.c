@@ -33,6 +33,7 @@ int main(void) {
 			game_screen();
 			break;
 		case 4://게임 종료
+			game_screen();
 			life = 0;
 			break;
 		default:

@@ -139,6 +139,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="acad_day.h" />
     <ClInclude Include="constants.h" />
     <ClInclude Include="declare.h" />
     <ClInclude Include="domain.h" />
@@ -147,6 +148,7 @@
     <ClInclude Include="view.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="acad_day.c" />
     <ClCompile Include="domain.c" />
     <ClCompile Include="init.c" />
     <ClCompile Include="main.c" />

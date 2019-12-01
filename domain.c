@@ -1,10 +1,21 @@
 #include "domain.h"
 
-int main_menu() {
+int select_main_menu(int amount) {
 	int ret = 0;
+	v_clear_menusquare();
 	v_menusquare();
 	v_main_menu();
-	ret = choose_menu(4);
+	ret = choose_menu(amount);
+
+	return ret;
+}
+
+int select_profvsstd(int amount) {
+	int ret = 0;
+	v_clear_menusquare();
+	v_menusquare();
+	v_profvsstd();
+	ret = choose_menu(amount);
 
 	return ret;
 }

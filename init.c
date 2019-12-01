@@ -1,11 +1,12 @@
 #include "init.h"
 
-void init_status(status* game) {
+status* init_status() {
+	status* game;
 	game = (status*)malloc(sizeof(status));
 	make_status(game);
-	
 
-	return;
+
+	return game;
 }
 
 
@@ -16,12 +17,12 @@ void make_status(status* game) {
 	game->type = -1;
 	game->week = 0;
 
-	//ÇÒ´ç½ÇÆÐ ´Ù·ï¾ß ÇÔ
+	//í• ë‹¹ì‹¤íŒ¨ ë‹¤ë¤„ì•¼ í•¨
 	game->choi = (player_p*)malloc(sizeof(player_p));
 	make_player_p(game->choi);
 	game->me = (student*)malloc(sizeof(student));
 	make_student(game->me);
-	//³ªÁß¿¡(ÇÐ»ý ¸ðµåÀÏ ¶§)meÀÇ typeº¯°æ ÇÊ¿ä
+	//ë‚˜ì¤‘ì—(í•™ìƒ ëª¨ë“œì¼ ë•Œ)meì˜ typeë³€ê²½ í•„ìš”
 	game->pp = (prof*)malloc(sizeof(prof));
 
 	game->academic_calender = (day**)malloc(sizeof(day*) * ACADEMIC_WEEK);

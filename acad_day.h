@@ -18,6 +18,4 @@
 //acad(academic day)의 메인 함수
 //이 함수를 통해 입출력과 편집이 이루어진다.
 */
-int acad_main(status* game) {
-
-}
+int acad_main(status* game);

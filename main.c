@@ -3,7 +3,7 @@
 #include "init.h"
 #include "view.h"
 #include "domain.h"
-
+#include "acad_day.h"
 
 int main(void) {
 	//선언 및 초기화

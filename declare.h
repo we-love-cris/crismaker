@@ -8,6 +8,13 @@
 // 상수값들 include
 #include "constants.h"
 
+/*함수 포인터들
+//기능이 비슷한 함수들은 복사 붙여넣기로 수정하고
+//함수 포인터를 이용해보고자 합니다
+*/
+//메뉴 포인터
+typedef int(*menusptr)(int);
+
 typedef struct player_professor {// 플레이어가 플레이할 교수. 이름은 아마 최운정? ㅎㅎ
 	//선언 메모리 관리 해주기
 	int assignment; //과제 낸 횟수
@@ -57,6 +64,10 @@ typedef struct Day {
 
 } day;
 
+typedef struct func_ptrs {//함수 포인터들의 저장
+	menusptr mp[2];
+}func;
+
 typedef struct now_status {//현재 학교의 상황
 	//선언 메모리 관리 해주기
 	int std_no; //학생 모드일 경우 자신의 출석 번호(0 ~ STD_AMOUNT - 1)
@@ -71,5 +82,6 @@ typedef struct now_status {//현재 학교의 상황
 
 	student** student_list; //출석부, 학생을 12명 할 예정. 가나다순으로 정렬해 보자(가능?)
 
+	func func_list;
 
 } status;

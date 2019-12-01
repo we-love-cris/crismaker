@@ -1,5 +1,7 @@
 #pragma once
 
+#define _CRT_SECURE_NO_WARNINGS
+
 // declare.h struct status
 #define STD_AMOUNT 12 //학생 수
 #define ACADEMIC_WEEK 8 //학사일정 총 주차 수
@@ -23,3 +25,5 @@
 #define VIEW_MAIN_VER 30
 #define VIEW_INFO_VER 10
 
+#define MENU_HOR 40
+#define MENU_VER 20

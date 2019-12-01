@@ -11,7 +11,7 @@
 #define OTHER_PROF 3
 
 // util.h
-#define STRING_LENGTH 100 //입력받을 문자의 최대 길이#pragma once
+#define STRING_LENGTH 100 //입력받을 문자의 최대 길이
 
 //view.h
 #define VIEW_HOR 100

@@ -172,6 +172,14 @@ int hangeul_sort() {
 
 }
 
+void menu_screen() {
+	system("mode con: cols=44 lines=24"); return;
+}
+
+void game_screen() {
+	system("mode con: cols=104 lines=44"); return;
+}
+
 void gotoxy(int x, int y) {
 	COORD pos = { x,y };
 	SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), pos);

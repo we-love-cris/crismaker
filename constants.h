@@ -12,8 +12,14 @@
 
 // util.h
 #define STRING_LENGTH 100 //입력받을 문자의 최대 길이
+#define UP 1//방향키 위쪽
+#define DOWN 2//방향키 아래쪽
+#define LEFT 3//방향키 왼쪽
+#define RIGHT 4//방향키 오른쪽
+#define ENTER 100//엔터키
 
 //view.h
 #define VIEW_HOR 100
 #define VIEW_MAIN_VER 30
 #define VIEW_INFO_VER 10
+

@@ -78,6 +78,7 @@ void make_prof(prof* pp) {
 
 	return;
 }
+//test
 void make_day(day* wk) {
 	wk->attend_rate = 0;
 	wk->move = 0;

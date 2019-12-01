@@ -12,3 +12,8 @@
 
 // util.h
 #define STRING_LENGTH 100 //입력받을 문자의 최대 길이
+
+//view.h
+#define MAIN_SCREEN_HOR 100
+#define MAIN_SCREEN_VER 30
+#define INFO_SCREEN_VER 10

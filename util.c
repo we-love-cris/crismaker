@@ -121,3 +121,15 @@ int get_unsigned_int() {
 int hangeul_sort() {
 
 }
+
+//gotoxy
+void gotoxy(int x, int y) {
+	COORD pos = { x,y };
+	SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), pos);
+}
+
+
+int sshow() {
+	printf("aaa\n");
+	return 1;
+}

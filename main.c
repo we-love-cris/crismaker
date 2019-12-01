@@ -1,11 +1,11 @@
 #include "declare.h"
-#include "util.h"
 #include "init.h"
-
+#include "view.h"
+#include "util.h"
 
 int main(void) {
 	//구조체들 선언
-
+	
 	//선언 이후의 초기화
 
 	//게임 시작
@@ -23,12 +23,7 @@ int main(void) {
 
 	//게임 플레이
 
-
-
-
-
-
-
+	printf("%d", MAX(3,2));
 
 	system("pause");
 	return 0;

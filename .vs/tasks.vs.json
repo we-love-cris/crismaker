@@ -1,0 +1,20 @@
+{
+  "version": "0.2.1",
+  "tasks": [
+    {
+      "taskName": "task-nview",
+      "appliesTo": "nview.h",
+      "type": "launch"
+    },
+    {
+      "taskName": "task-nnview",
+      "appliesTo": "nnview.c",
+      "type": "launch"
+    },
+    {
+      "taskName": "task-nnview",
+      "appliesTo": "nnview.h",
+      "type": "launch"
+    }
+  ]
+}

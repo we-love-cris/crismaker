@@ -2,9 +2,18 @@
 //선언된 공용 라이브러리
 #include <stdio.h>
 #include <stdlib.h>
+#include <malloc.h>
+#include <Windows.h>
 
 // 상수값들 include
 #include "constants.h"
+
+/*
+#include "util.h"
+#include "init.h"
+#include "view.h"
+#include "domain.h"
+*/
 
 typedef struct player_professor {// 플레이어가 플레이할 교수. 이름은 아마 최운정? ㅎㅎ
 	//선언 메모리 관리 해주기

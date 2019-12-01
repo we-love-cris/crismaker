@@ -58,3 +58,6 @@ int hangeul_sort(); //한글을 정렬하는 함수, 학생 생성 후 출석부
 
 void gotoxy(int x, int y);
 void textcolor(int text_color, int background_color);
+
+void menu_screen();
+void game_screen();

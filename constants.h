@@ -1,8 +1,8 @@
 #pragma once
 
 // declare.h struct status
-#define STD_AMOUNT 12 //ÇĞ»ı ¼ö
-#define ACADEMIC_WEEK 8 //ÇĞ»çÀÏÁ¤ ÃÑ ÁÖÂ÷ ¼ö
+#define STD_AMOUNT 12 //í•™ìƒ ìˆ˜
+#define ACADEMIC_WEEK 8 //í•™ì‚¬ì¼ì • ì´ ì£¼ì°¨ ìˆ˜
 
 // declare.h struct types
 #define PLAYER_PROF 0
@@ -11,4 +11,9 @@
 #define OTHER_PROF 3
 
 // util.h
-#define STRING_LENGTH 100 //ÀÔ·Â¹ŞÀ» ¹®ÀÚÀÇ ÃÖ´ë ±æÀÌ
+#define STRING_LENGTH 100 //ì…ë ¥ë°›ì„ ë¬¸ìì˜ ìµœëŒ€ ê¸¸ì´#pragma once
+
+//view.h
+#define VIEW_HOR 100
+#define VIEW_MAIN_VER 30
+#define VIEW_INFO_VER 10

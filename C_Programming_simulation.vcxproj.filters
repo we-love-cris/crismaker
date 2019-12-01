@@ -15,21 +15,39 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="constants.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
     <ClInclude Include="declare.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
-    <ClInclude Include="constants.h">
+    <ClInclude Include="domain.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="init.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
     <ClInclude Include="util.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
+    <ClInclude Include="view.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="domain.c">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
     <ClCompile Include="main.c">
       <Filter>소스 파일</Filter>
     </ClCompile>
     <ClCompile Include="util.c">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="init.c">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="view.c">
       <Filter>소스 파일</Filter>
     </ClCompile>
   </ItemGroup>

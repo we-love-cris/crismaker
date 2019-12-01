@@ -116,6 +116,56 @@ int get_unsigned_int() {
 	return ret; //제대로 입력되었으면 1 return
 }
 
+int get_wasd() {
+	int key = 0;
+	key = getch();
+	switch (key) {
+	case 119://'w'
+	case 87: //'W'
+		return UP;
+		break;
+	case 97://'a'
+	case 65://'A'
+		return LEFT;
+		break;
+	case 115://'s'
+	case 83: //'S'
+		return DOWN;
+		break;
+	case 100://'d'
+	case 68: //'D'
+		return RIGHT;
+		break;
+	case 13:
+	case 10://'\n'
+		return ENTER;
+		break;
+	case 224://방향키인 경우
+		key = getch();
+		switch (key) {
+		case 72://up
+			return UP;
+			break;
+		case 80://down
+			return DOWN;
+			break;
+		case 75://left
+			return LEFT;
+			break;
+		case 77://right
+			return RIGHT;
+			break;
+		default://wrong
+			return 0;
+			break;
+		}
+		break;
+	default:
+		return 0;
+		break;
+	}
+}
+
 // sorting
 //한글을 정렬하는 함수, 학생 생성 후 출석부에 넣을 때 이용할 예정
 int hangeul_sort() {
@@ -125,4 +175,8 @@ int hangeul_sort() {
 void gotoxy(int x, int y) {
 	COORD pos = { x,y };
 	SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), pos);
+}
+
+void textcolor(int text_color, int background_color) {
+	SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), text_color | background_color * 16);
 }

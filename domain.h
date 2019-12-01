@@ -1,8 +1,11 @@
 #pragma once
 
 #include "declare.h"
+#include "util.h"
+#include "view.h"
 
-//¸ğµå ¼³Á¤(ÇĞ»ı, ±³¼ö ¸ğµå)
-void set_mode(status* game);
+//ë©”ì¸ë©”ë‰´ ì‹¤í–‰, ì„ íƒí•œ í•­ëª©ì„ ë¦¬í„´í•œë‹¤
+int main_menu();
 
-
+//1~maxê¹Œì§€ì˜ ë©”ë‰´ë¥¼ ì„ íƒí•˜ëŠ” í•¨ìˆ˜
+int choose_menu(int max);

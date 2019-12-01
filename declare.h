@@ -1,73 +1,75 @@
 #pragma once
-//¼±¾ğµÈ °ø¿ë ¶óÀÌºê·¯¸®
+//ì„ ì–¸ëœ ê³µìš© ë¼ì´ë¸ŒëŸ¬ë¦¬
 #include <stdio.h>
 #include <stdlib.h>
+#include <Windows.h>
+#include <conio.h>
 
-// »ó¼ö°ªµé include
+// ìƒìˆ˜ê°’ë“¤ include
 #include "constants.h"
 
-typedef struct player_professor {// ÇÃ·¹ÀÌ¾î°¡ ÇÃ·¹ÀÌÇÒ ±³¼ö. ÀÌ¸§Àº ¾Æ¸¶ ÃÖ¿îÁ¤? ¤¾¤¾
-	//¼±¾ğ ¸Ş¸ğ¸® °ü¸® ÇØÁÖ±â
-	int assignment; //°úÁ¦ ³½ È½¼ö
-	int chat; //Àâ´ã
-	int move; //Çàµ¿·Â
-	int progress; //Áøµµ
-	int test; //½ÃÇè º» È½¼ö
-	int type; //0(PLAYER_PROF)ÀÌ¸é ±³¼ö
+typedef struct player_professor {// í”Œë ˆì´ì–´ê°€ í”Œë ˆì´í•  êµìˆ˜. ì´ë¦„ì€ ì•„ë§ˆ ìµœìš´ì •? ã…ã…
+	//ì„ ì–¸ ë©”ëª¨ë¦¬ ê´€ë¦¬ í•´ì£¼ê¸°
+	int assignment; //ê³¼ì œ ë‚¸ íšŸìˆ˜
+	int chat; //ì¡ë‹´
+	int move; //í–‰ë™ë ¥
+	int progress; //ì§„ë„
+	int test; //ì‹œí—˜ ë³¸ íšŸìˆ˜
+	int type; //0(PLAYER_PROF)ì´ë©´ êµìˆ˜
 
 	char* name;
 } player_p;
 
-typedef struct student {// ÃÖ±³¼ö´ÔÀÌ µÇ¾î ¸¸³¯ ÇĞ»ıµé
-	int attend_count; //Ãâ¼® È½¼ö
-	int attend_rate; //Ãâ¼Æ·ü
-	int happiness; //Çàº¹µµ
-	int move; //Çàµ¿·Â
-	int progress; //µû¶ó°£ Áøµµ
-	int skill; //½Ç·Â, Áú¹®ÇÒ È®·ü
-	int tired; //ÇÇ·Îµµ
-	int type; //1(PLAYER_STUDENT)ÀÌ¸é ÇĞ»ı, ÇÃ·¹ÀÌ¾î°¡ ¾Æ´Ï¸é 2(OTHER_STUDENT)
+typedef struct student {// ìµœêµìˆ˜ë‹˜ì´ ë˜ì–´ ë§Œë‚  í•™ìƒë“¤
+	int attend_count; //ì¶œì„ íšŸìˆ˜
+	int attend_rate; //ì¶œì…•ë¥ 
+	int happiness; //í–‰ë³µë„
+	int move; //í–‰ë™ë ¥
+	int progress; //ë”°ë¼ê°„ ì§„ë„
+	int skill; //ì‹¤ë ¥, ì§ˆë¬¸í•  í™•ë¥ 
+	int tired; //í”¼ë¡œë„
+	int type; //1(PLAYER_STUDENT)ì´ë©´ í•™ìƒ, í”Œë ˆì´ì–´ê°€ ì•„ë‹ˆë©´ 2(OTHER_STUDENT)
 
 	char* name;
 } student;
 
-typedef struct professor {// ÇĞ»ı ¸ğµåÀÏ ´ë ¸¸³¯ ±³¼ö´Ô
-	int chat_rate; //µı ¾ê±â ÇÒ È®·ü
-	int progress_rate; //Áøµµ ³ª°¥ È®·ü
-	int type; //ÇÃ·¹ÀÌ¾î°¡ ¾Æ´Ï¸é 3(OTHER_PROF)
+typedef struct professor {// í•™ìƒ ëª¨ë“œì¼ ëŒ€ ë§Œë‚  êµìˆ˜ë‹˜
+	int chat_rate; //ë”´ ì–˜ê¸° í•  í™•ë¥ 
+	int progress_rate; //ì§„ë„ ë‚˜ê°ˆ í™•ë¥ 
+	int type; //í”Œë ˆì´ì–´ê°€ ì•„ë‹ˆë©´ 3(OTHER_PROF)
 
 	char* name;
 
 } prof;
 
 typedef struct Day {
-	int attend_rate; //¿¹»ó Ãâ¼®·ü
-	int move; //Çàµ¿·Â
+	int attend_rate; //ì˜ˆìƒ ì¶œì„ë¥ 
+	int move; //í–‰ë™ë ¥
 	int type;
-	/* 
-	// 0 : ÀÏ¹İ ¼ö¾÷
+	/*
+	// 0 : ì¼ë°˜ ìˆ˜ì—…
 	// 1 : OT
-	// 2 : ÃàÁ¦
-	// 3 : ½ÃÇè
-	// 4 : 
+	// 2 : ì¶•ì œ
+	// 3 : ì‹œí—˜
+	// 4 :
 	...
 	*/
 
 } day;
 
-typedef struct now_status {//ÇöÀç ÇĞ±³ÀÇ »óÈ²
-	//¼±¾ğ ¸Ş¸ğ¸® °ü¸® ÇØÁÖ±â
-	int std_no; //ÇĞ»ı ¸ğµåÀÏ °æ¿ì ÀÚ½ÅÀÇ Ãâ¼® ¹øÈ£(0 ~ STD_AMOUNT - 1)
-	int type; //ÇöÀç ¸ğµå PLAYER_PROF : ±³¼ö ¸ğµå, PLAYER_STUDENT : ÇĞ»ı ¸ğµå
-	int week; //ÇöÀç ¸î ÁÖÂ÷ÀÎÁö, week < ACADEMIC_WEEK
+typedef struct now_status {//í˜„ì¬ í•™êµì˜ ìƒí™©
+	//ì„ ì–¸ ë©”ëª¨ë¦¬ ê´€ë¦¬ í•´ì£¼ê¸°
+	int std_no; //í•™ìƒ ëª¨ë“œì¼ ê²½ìš° ìì‹ ì˜ ì¶œì„ ë²ˆí˜¸(0 ~ STD_AMOUNT - 1)
+	int type; //í˜„ì¬ ëª¨ë“œ PLAYER_PROF : êµìˆ˜ ëª¨ë“œ, PLAYER_STUDENT : í•™ìƒ ëª¨ë“œ
+	int week; //í˜„ì¬ ëª‡ ì£¼ì°¨ì¸ì§€, week < ACADEMIC_WEEK
 
-	player_p* choi; //±³¼ö ¸ğµåÀÏ °æ¿ìÀÇ ±³¼ö
-	student* me; //ÇĞ»ı ¸ğµåÀÏ °æ¿ìÀÇ ÇÃ·¹ÀÌ¾î
-	prof* pp; //ÇĞ»ı ¸ğµåÀÏ °æ¿ìÀÇ ±³¼ö
+	player_p* choi; //êµìˆ˜ ëª¨ë“œì¼ ê²½ìš°ì˜ êµìˆ˜
+	student* me; //í•™ìƒ ëª¨ë“œì¼ ê²½ìš°ì˜ í”Œë ˆì´ì–´
+	prof* pp; //í•™ìƒ ëª¨ë“œì¼ ê²½ìš°ì˜ êµìˆ˜
 
-	day** academic_calender; //ÇĞ»ç ÀÏÁ¤, ÃÑ 8ÁÖÂ÷ÀÏ ¿¹Á¤
+	day** academic_calender; //í•™ì‚¬ ì¼ì •, ì´ 8ì£¼ì°¨ì¼ ì˜ˆì •
 
-	student** student_list; //Ãâ¼®ºÎ, ÇĞ»ıÀ» 12¸í ÇÒ ¿¹Á¤. °¡³ª´Ù¼øÀ¸·Î Á¤·ÄÇØ º¸ÀÚ(°¡´É?)
+	student** student_list; //ì¶œì„ë¶€, í•™ìƒì„ 12ëª… í•  ì˜ˆì •. ê°€ë‚˜ë‹¤ìˆœìœ¼ë¡œ ì •ë ¬í•´ ë³´ì(ê°€ëŠ¥?)
 
 
 } status;

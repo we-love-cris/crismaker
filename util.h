@@ -45,10 +45,16 @@ int get_string(char* string, int length);
 */
 int get_unsigned_int();
 
-
+/*방향키 혹은 wasd로 방향을 읽는 함수
+//위, 아래, 왼쪽, 오른쪽 순서로 UP, DOWN, LEFT, RIGHT를 리턴
+//엔터는 100을 리턴
+//그 외의 의미없는 문자는 0을 리턴
+*/
+int get_wasd();
 
 
 // sorting
 int hangeul_sort(); //한글을 정렬하는 함수, 학생 생성 후 출석부에 넣을 때 이용할 예정#pragma once
 
 void gotoxy(int x, int y);
+void textcolor(int text_color, int background_color);

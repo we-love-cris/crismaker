@@ -141,11 +141,17 @@
   <ItemGroup>
     <ClInclude Include="constants.h" />
     <ClInclude Include="declare.h" />
+    <ClInclude Include="domain.h" />
+    <ClInclude Include="init.h" />
     <ClInclude Include="util.h" />
+    <ClInclude Include="view.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="domain.c" />
+    <ClCompile Include="init.c" />
     <ClCompile Include="main.c" />
     <ClCompile Include="util.c" />
+    <ClCompile Include="view.c" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

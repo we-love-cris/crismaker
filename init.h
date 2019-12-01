@@ -1,12 +1,11 @@
 #pragma once
+//ê¸°ë³¸ ë¼ì´ë¸ŒëŸ¬ë¦¬ ì¶”ê°€ ì„ ì–¸ ì¥ì†Œ
 
-//±âº» ¶óÀÌºê·¯¸® Ãß°¡ ¼±¾ğ Àå¼Ò
+#include "declare.h" //ê¸°ë³¸ ë¼ì´ë¸ŒëŸ¬ë¦¬ ë°, ìƒìˆ˜ê°’, êµ¬ì¡°ì²´ include
+#include "util.h" //util í•¨ìˆ˜ë“¤ include
 
-#include "declare.h" //±âº» ¶óÀÌºê·¯¸® ¹×, »ó¼ö°ª, ±¸Á¶Ã¼ include
-#include "util.h" //util ÇÔ¼öµé include
-
-//¸ğµç ±âº»ÀûÀÎ °ªµé¿¡ ´ëÇÑ ÃÊ±âÈ­
-void init_status(status* game);
+//ëª¨ë“  ê¸°ë³¸ì ì¸ ê°’ë“¤ì— ëŒ€í•œ ì´ˆê¸°í™”
+status* init_status();
 
 
 void make_status(status* game);

@@ -8,6 +8,7 @@ void v_start();
 
 //메뉴 선택
 void v_main_menu();
+void v_menu_indi(int chosen, char ch[3]);
 
 //화면 틀
 //메인 선택 화면
@@ -18,3 +19,4 @@ void v_board();
 //기능 함수들
 void v_row(int height);
 void v_ver(int start, int end, int height, int amount);
+void v_clearall();

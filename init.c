@@ -41,6 +41,8 @@ void make_status(status* game) {
 		game->student_list[i] = std;
 	}
 
+	game->func_list.mp[0] = select_main_menu;
+	game->func_list.mp[1] = select_profvsstd;
 
 	return;
 }
@@ -87,11 +89,11 @@ void make_day(day* wk) {
 	return;
 }
 
-void init_consol() {
+void init_consol(status* game) {
 	textcolor(9, 15);
 	v_clearall();
 	system("title C프로그래밍 시뮬레이터");
-	system("mode con: cols=104 lines=44");
+	menu_screen();
 
 	return;
 }

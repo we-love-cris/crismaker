@@ -5,7 +5,25 @@ void v_start() {
 }
 
 void v_main_menu() {
+	gotoxy(45, 5); printf("게 임 시 작");
+	gotoxy(42, 8); printf("학 사 일 정  수 정");
+	gotoxy(42, 11); printf("시 험 문 제  수 정");
+	gotoxy(45, 14); printf("게 임 종 료");
 
+	return;
+}
+
+void v_profvsstd() {
+	gotoxy(45, 5); printf("교 수 모 드");
+	gotoxy(45, 8); printf("학 생 모 드");
+}
+
+void v_menu_indi(int chosen, char ch[3]) {
+	int go = 2 + 3 * chosen;
+	gotoxy(38, go);
+	printf("%s", ch);
+
+	return;
 }
 
 void v_menusquare() {
@@ -60,5 +78,11 @@ void v_ver(int start, int end, int height, int amount) {
 		printf("│");
 	}
 
+	return;
+}
+
+void v_clearall() {
+	for(int i = 0; i < 50; i++)
+	printf("                                                                                                         \n");
 	return;
 }

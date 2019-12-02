@@ -15,6 +15,7 @@ void make_student(student* std);
 void make_player_p(player_p* choi);
 void make_prof(prof* pp);
 void make_day(day* wk);
+void make_database(database* db);
 
 
 //콘솔창 초기화

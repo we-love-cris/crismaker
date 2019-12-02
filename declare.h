@@ -15,6 +15,7 @@
 */
 //메뉴 포인터
 typedef int(*menusptr)(int);
+typedef void(*screenptr)();
 
 typedef struct player_professor {// 플레이어가 플레이할 교수. 이름은 아마 최운정? ㅎㅎ
 	//선언 메모리 관리 해주기
@@ -67,8 +68,13 @@ typedef struct Day {
 } day;
 
 typedef struct func_ptrs {//함수 포인터들의 저장
-	menusptr mp[2];
+	menusptr show_menu[2];
+	screenptr screen_size[2];
 }func;
+
+typedef struct Database {//학교의 default값 등 데이터들을 저장하는 곳
+	func func_list;
+} database;
 
 typedef struct now_status {//현재 학교의 상황 및 데이터베이스
 	//선언 메모리 관리 해주기
@@ -81,9 +87,10 @@ typedef struct now_status {//현재 학교의 상황 및 데이터베이스
 	prof* pp; //학생 모드일 경우의 교수
 
 	day** academic_calender; //학사 일정, 총 8주차일 예정
-
+	
 	student** student_list; //출석부, 학생을 12명 할 예정. 가나다순으로 정렬해 보자(가능?)
 
-	func func_list; //함수 포인터 리스트
+	database* db;//함수 포인터, default값 등 저장
 
 } status;
+

@@ -41,8 +41,8 @@ void make_status(status* game) {
 		game->student_list[i] = std;
 	}
 
-	game->func_list.mp[0] = select_main_menu;
-	game->func_list.mp[1] = select_profvsstd;
+	game->db = (database*)malloc(sizeof(database));
+	make_database(game->db);
 
 	return;
 }
@@ -85,6 +85,15 @@ void make_day(day* wk) {
 	wk->attend_rate = 0;
 	wk->move = 0;
 	wk->type = 0;
+
+	return;
+}
+void make_database(database* db) {
+	db->func_list.show_menu[0] = select_main_menu;
+	db->func_list.show_menu[1] = select_profvsstd;
+
+	db->func_list.screen_size[0] = menu_screen;//메뉴 선택 창(작음)
+	db->func_list.screen_size[1] = game_screen;//게임 창(큼)
 
 	return;
 }

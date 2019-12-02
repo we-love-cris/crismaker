@@ -19,22 +19,22 @@ int main(void) {
 	v_start();
 	//메인 메뉴
 	while (life) {
-		menu_screen();
-		menu_select = game->func_list.mp[0](4);
+		game->db->func_list.screen_size[0]();
+		menu_select = game->db->func_list.show_menu[0](4);
 
 		switch (menu_select) {
 		case 1://게임 시작, 모드 선택
-			menu_screen();
-			game_mode = game->func_list.mp[1](2);
+			game->db->func_list.screen_size[0]();
+			game_mode = game->db->func_list.show_menu[1](2);
 			break;
 		case 2://학사일정 편집
-			game_screen();
+			game->db->func_list.screen_size[1]();
 			break;
 		case 3://시험문제 수정
-			game_screen();
+			game->db->func_list.screen_size[1]();
 			break;
 		case 4://게임 종료
-			game_screen();
+			game->db->func_list.screen_size[1]();
 			life = 0;
 			break;
 		default:

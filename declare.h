@@ -4,6 +4,7 @@
 #include <stdlib.h>
 #include <Windows.h>
 #include <conio.h>
+#include <string.h>
 
 // 상수값들 include
 #include "constants.h"

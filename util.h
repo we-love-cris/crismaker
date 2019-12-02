@@ -54,8 +54,13 @@ int get_wasd();
 
 
 // sorting
- //한글을 정렬하는 함수, 학생 생성 후 출석부에 넣을 때 이용할 예정
-int hangeul_sort(char* student_list, int amount);
+/*
+//한글을 정렬하는 함수, 학생 생성 후 출석부에 넣을 때 이용할 예정
+//출석부의 포인터와 학생 수를 인자로 넘겨 준다
+*/
+void hangeul_sort(student** student_list, int amount);
+//hangeul_sort의 기능 함수
+void change_loc(student** stda, student** stdb);
 
 void gotoxy(int x, int y);
 void textcolor(int text_color, int background_color);

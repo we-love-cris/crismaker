@@ -167,9 +167,36 @@ int get_wasd() {
 }
 
 // sorting
+/*
 //한글을 정렬하는 함수, 학생 생성 후 출석부에 넣을 때 이용할 예정
-int hangeul_sort(char* student_list, int amount) {
+//출석부의 포인터와 학생 수를 인자로 받는다
+//포인터 내부의 한글을 정렬한다.
+//구현이 편하므로 버블 소팅 이용
+//한글의 비교는 strcmp를 이용한다 (a가 b보다 사전상 뒤라면 1, 아니라면 -1, 같다면 0을 리턴)
+*/
+void hangeul_sort(student** student_list, int amount) {
+	int i = 0, j = 0;
+	int flag = 0;
 
+	for (i = 0; i < amount - 1; i++) {
+		for (j = 0; j < amount - 1 - i; j++) {
+			flag = strcmp(student_list[j]->name, student_list[j + 1]->name);
+			if (flag > 0) change_loc(&student_list[j], &student_list[j + 1]);
+		}
+	}
+
+	return;
+}
+
+//stda와 stdb를 바꾼다
+void change_loc(student** stda, student** stdb) {
+	student** temp = (student**)malloc(sizeof(student*));
+
+	*temp = *stda;
+	*stda = *stdb;
+	*stdb = *temp;
+
+	return;
 }
 
 void menu_screen() {

@@ -5,7 +5,7 @@
 #include "domain.h"
 #include "acad_day.h"
 
-/*
+
 int main(void) {
 	//선언 및 초기화
 	int life = 1;
@@ -63,9 +63,10 @@ int main(void) {
 	system("pause");
 	return 0;
 }
-*/
+
 
 //test 용
+/*
 int main(void) {
 	student a = { 0,0,0,0,0,0,0,0, "박용준" };
 	student b = { 0,0,0,0,0,0,0,0, "준용박" };
@@ -101,3 +102,4 @@ int main(void) {
 	system("pause");
 	return;
 }
+*/

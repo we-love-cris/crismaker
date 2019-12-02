@@ -55,11 +55,12 @@ typedef struct Day {
 	int move; //행동력
 	int type;
 	/*
-	// 0 : 일반 수업
-	// 1 : OT
-	// 2 : 축제
-	// 3 : 시험
-	// 4 :
+	//0. 일반 수업
+	//1. OT
+	//2. 팀플(+ 팀 짜기)
+	//3. 시험(+ 공지)
+	//4. 축제
+	//5. 공휴일
 	...
 	*/
 
@@ -69,7 +70,7 @@ typedef struct func_ptrs {//함수 포인터들의 저장
 	menusptr mp[2];
 }func;
 
-typedef struct now_status {//현재 학교의 상황
+typedef struct now_status {//현재 학교의 상황 및 데이터베이스
 	//선언 메모리 관리 해주기
 	int std_no; //학생 모드일 경우 자신의 출석 번호(0 ~ STD_AMOUNT - 1)
 	int type; //현재 모드 PLAYER_PROF : 교수 모드, PLAYER_STUDENT : 학생 모드

@@ -5,6 +5,7 @@
 #include "util.h" //util 함수들 include
 #include "view.h"
 #include "domain.h"
+#include "acad_day.h"
 
 //모든 기본적인 값들에 대한 초기화
 status* init_status();

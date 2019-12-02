@@ -62,8 +62,11 @@ void hangeul_sort(student** student_list, int amount);
 //hangeul_sort의 기능 함수
 void change_loc(student** stda, student** stdb);
 
-void gotoxy(int x, int y);
-void textcolor(int text_color, int background_color);
-
+//메뉴 화면 표시기
 void menu_screen();
 void game_screen();
+
+//도스 창 관련 기능 함수들
+void gotoxy(int x, int y);
+void textcolor(int text_color, int background_color);
+void CursorView(char show);

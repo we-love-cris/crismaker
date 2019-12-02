@@ -214,4 +214,15 @@ void gotoxy(int x, int y) {
 
 void textcolor(int text_color, int background_color) {
 	SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), text_color | background_color * 16);
+	return;
+}
+
+void CursorView(char show){//커서숨기기
+	HANDLE hConsole;
+	CONSOLE_CURSOR_INFO ConsoleCursor;
+	hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
+	ConsoleCursor.bVisible = show;
+	ConsoleCursor.dwSize = 1;
+	SetConsoleCursorInfo(hConsole, &ConsoleCursor);
+	return;
 }

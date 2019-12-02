@@ -102,6 +102,7 @@ void make_database(database* db) {
 }
 
 void init_consol(status* game) {
+	CursorView(0);
 	textcolor(9, 15);
 	v_clearall();
 	system("title C프로그래밍 시뮬레이터");

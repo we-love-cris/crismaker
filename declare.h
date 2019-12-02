@@ -74,6 +74,7 @@ typedef struct func_ptrs {//함수 포인터들의 저장
 
 typedef struct Database {//학교의 default값 등 데이터들을 저장하는 곳
 	func func_list;
+	day** default_days;
 } database;
 
 typedef struct now_status {//현재 학교의 상황 및 데이터베이스

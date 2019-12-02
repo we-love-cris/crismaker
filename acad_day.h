@@ -23,4 +23,6 @@
 int acad_main(status* game);
 
 //acad를 default로 바꾸는 함수
+//초기화일 뿐이며, 게임 시작 전에는 출석률에 대한 보정이 필요하다
+//ex) 팀프 공지 날이 축제인 경우 팀프날 출석률 -20
 int acad_default(day** academic_calender);

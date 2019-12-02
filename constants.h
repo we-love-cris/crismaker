@@ -6,6 +6,7 @@
 // declare.h struct status
 #define STD_AMOUNT 12 //학생 수
 #define ACADEMIC_WEEK 8 //학사일정 총 주차 수
+#define ACAD_TYPES 6 //학사일정 종류 수
 
 // declare.h struct types
 #define PLAYER_PROF 0
@@ -28,3 +29,16 @@
 
 #define MENU_HOR 40
 #define MENU_VER 20
+
+#define CLASS_ATTEND_RATE 80
+#define CLASS_MOVE 30
+#define OT_ATTEND_RATE 60
+#define OT_MOVE 10
+#define TP_ATTEND_RATE 90
+#define TP_MOVE 10
+#define TEST_ATTEND_RATE 90
+#define TEST_MOVE 5
+#define FESTIV_ATTEND_RATE 30
+#define FESTIV_MOVE 30
+#define HOLI_ATTEND_RATE 0
+#define HOLI_MOVE 0

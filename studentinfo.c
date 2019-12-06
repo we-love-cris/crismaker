@@ -17,7 +17,7 @@ void stdnaming(status *game) {
 	int y = 3;
 	char * name;
 
-	system("mode con: cols=44 lines=36");
+	//system("mode con: cols=44 lines=36");
 
 	name = malloc(sizeof(char));
 	if (name == NULL) {
@@ -32,6 +32,6 @@ void stdnaming(status *game) {
 		scanf("%s", name);
 		allocname(game, name, i);
 		//이름을 학생 정보에 연동시켜서 저장해야 함.
-		y = y + 2;
+		y++;
 	}
 }

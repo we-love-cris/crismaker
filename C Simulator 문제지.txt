@@ -1,0 +1,45 @@
+다음은 한 학생이 코딩한 결과이다. 물음에 답하시오. (30점) 
+
+1  #include <stdio.h>
+2  #include <string.h>
+3  #include <stdlib.h>
+4
+5  int main() {
+6 	int num1 = 10;
+7 	int num2 = 20;
+8 	num3 = 30;
+9 
+10 	int *p1 = &num1;
+11 	int *p2 = (int *)malloc(sizeof(int));
+12 	memset(p2, 0x0, _msize(p2));
+13 	int *p3 = NULL;
+14 	int *p4 = (int *)calloc(0x0, sizeof(int));
+15 	int *p5 = NULL;
+16 	p5 = *p1;
+17 
+18 	printf("p1: %p p1의 크기: %d, *p1= %d\n", p1, _msize(p1), *p1);
+19 	printf("p2: %p p2의 크기: %d, *p2= %d\n", p2, _msize(p2), *p2);
+20 	printf("p3: %p p3의 크기: %d, *p3= %d\n", p3, _msize(p3), *p3);
+21 	printf("p4: %p p4의 크기: %d, *p4= %d\n", p4, _msize(p4), *p4);
+22 	printf("p5: %p p5의 크기: %d, *p5= %d\n", p5, _msize(p5), *p5);
+23 }
+
+1. complie error(syntax error) 부분을 옳게 고치시오. (5점)
+
+2. 다음 대화 중 옳지 않은 대화를 모두 고르고 옳게 고쳐보시오.
+(단, 1번 문제의 컴파일 에러를 모두 옳게 수정했다고 가정한다.) (25점)
+(정답을 올바르게 맞출 시 10점, 부분점수 없음.)
+(올바르게 고칠 시 15점 추가, 부분점수 존재)
+
+태현: 디버깅할 때, 처음 에러가 뜨는 부분은 20번째 줄이겠군.
+용준: p2의 크기는 4, *p2는 memset함수에 의해 0이 되겠군.
+원형: calloc은 malloc에 memset 이용한 것이랑 
+      비교하면 속도가 좀 빠르다는 장점이 있어.
+찬형: 그렇다면 *p4 또한 바로 0으로 초기화되겠군.
+지혁: p5는 결국 *p1이므로 22번째 결과 중에서 p5의 크기는 4이고 
+      p5=10 이겠어. _msize(p5)까진 잘 나타나겠지만, *p5에서
+      에러가 발생하겠군.
+지영: 20번째 줄을 printf("p3: %p, *p3= %d\n", p3);; 로 수정하면,
+      비정상 종료가 일어나지 않겠군.
+지윤: C99 기준, Windows Visual studio 버전으로 돌려봤는데, free함수를
+      넣지 않아서 디버깅하지 않고 시작(ctrl+f5)하면, 바로 비정상 종료돼.

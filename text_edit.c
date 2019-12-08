@@ -8,12 +8,12 @@ int editing_file(int prev_number) {//파일 수정
 	int lines = 1;
 	int cursor = 1;
 	int input = 0;//input값 저장
-	int temp = 0;//line 값 임시저장 및 loop에 사용
-	ll pare = { NULL, NULL, NULL };
+	int temp = 0, temp2 = 0;//line 값 임시저장 및 loop에 사용
+	ll pare = { NULL, NULL, NULL, 100 };
 	ll* nowline;
 
 	if (0) {//파일 열기
-
+		;
 	}
 	else {//문제를 새로 만드는 경우
 		pare.content = (char*)calloc(100, sizeof(char));
@@ -40,32 +40,76 @@ int editing_file(int prev_number) {//파일 수정
 			break;
 		case 9: //tab
 			for (temp = 0; temp < 8; temp++) {
-				char_input(nowline->content, cursor - 1, 32);
+				temp2 = char_input(nowline->content, cursor - 1, 32, nowline->max_size);
+				nowline->max_size = temp2;
 				cursor++;
 			}
 			break;
 		case 13: //enter
-			char_input(nowline->content, cursor - 1, 13);
-			cursor++;
-			//라인 변경
+			temp2 = char_input(nowline->content, cursor - 1, 13, nowline->max_size);
+			nowline->max_size = temp2;
+			if (nowline->next == NULL) {
+				making_ll(nowline);
+			}
+			nowline = nowline->next;
+			cursor = 1;
 			break;
 		case 1000: //up
-
+			if (nowline->prev == NULL) {
+				if (cursor > 100) cursor -= 100;
+			}
+			else {
+				nowline = nowline->prev;
+				cursor = MIN(cursor, strlen(nowline->content) + 1);
+			}
 			break;
 		case 1001: //down
+			if (nowline->next == NULL) {
+
+			}
+			else {
+				nowline = nowline->next;
+				cursor = MIN(cursor, strlen(nowline->content) + 1);
+			}
 			break;
 		case 1002: //left
+			if (cursor == 1) {
+				if (nowline->prev != NULL) {
+					nowline = nowline->prev;
+					cursor = strlen(nowline->content) + 1;
+				}
+			}
+			else if (is_hangeul(nowline->content[cursor - 1])) {
+				cursor -= 2;
+			}
+			else {
+				cursor--;
+			}
 			break;
 		case 1003: //right
+			if (cursor - 1 == strlen(nowline->content)) {
+				if (nowline->next != NULL) {
+					nowline = nowline->next;
+					cursor = 1;
+				}
+			}
+			else if (is_hangeul(nowline->content[cursor - 1])) {
+				cursor += 2;
+			}
+			else {
+				cursor++;
+			}
 			break;
 
 		default:
-			char_input(nowline->content, cursor - 1, input);
+			temp2 = char_input(nowline->content, cursor - 1, input, nowline->max_size);
+			nowline->max_size = temp2;
 			cursor++;
 			break;
 		}
 		gotoxy(lines, 1);
 		printf("%s\t%d\n", nowline->content, cursor);
+		gotoxy(cursor, lines);
 		/*
 		if (!is_hangeul((char)input)) {
 			printf("%s\n", nowline->content);
@@ -82,6 +126,8 @@ ll* making_ll(ll* prev_line) {
 	line->prev = NULL;
 	line->next = NULL;
 	line->content = (char*)malloc(sizeof(char) * 100);
+	line->content[0] = '\0';
+	line->max_size = 100;
 	if (prev_line->next != NULL) {
 		line->next = prev_line->next;
 		prev_line->next->prev = line;
@@ -160,12 +206,13 @@ int char_delete(char* content, int at) {
 	return ret;
 }
 
-void char_input(char* content, int at, int input) {
+int char_input(char* content, int at, int input, int char_size) {
 	int i = 0;
 	int length = strlen(content);
 	
-	if (length + 10 > sizeof(content)) {
-		content = (char*)realloc(content, sizeof(content) * 2);
+	if (length + 10 > char_size) {
+		content = (char*)realloc(content, char_size * 2);
+		char_size *= 2;
 	}
 
 	i = at;
@@ -174,7 +221,7 @@ void char_input(char* content, int at, int input) {
 	}
 	content[at] = (char)input;
 	content[length + 1] = '\0';
-	return;
+	return char_size;
 }
 
 int is_hangeul(int what) {

@@ -6,6 +6,7 @@ typedef struct linked_list {
 	struct linked_list * prev;
 	struct linked_list * next;
 	char* content;
+	int max_size;
 } ll;
 
 
@@ -18,5 +19,5 @@ void deleting_ll(ll* line);
 
 int get_input();
 int char_delete(char* content, int at);
-void char_input(char* content, int at, int input);
+int char_input(char* content, int at, int input, int char_size);
 int is_hangeul(int what);

@@ -21,7 +21,6 @@ int main(void) {
 	while (life) {
 		game->db->func_list.screen_size[0]();
 		menu_select = game->db->func_list.show_menu[0](4);
-
 		switch (menu_select) {
 		case 1://게임 시작, 모드 선택
 			game->db->func_list.screen_size[0]();

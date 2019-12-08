@@ -27,7 +27,7 @@ int editing_file(int prev_number) {//파일 수정
 		switch (input) {
 		case 8: //backspace
 			if (lines == 1 && cursor == 1) {
-				;
+				
 			}
 			else if (cursor == 1) {
 

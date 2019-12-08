@@ -4,8 +4,9 @@
 #include "view.h"
 #include "domain.h"
 #include "acad_day.h"
+#include "text_edit.h"
 
-
+/*
 int main(void) {
 	//선언 및 초기화
 	int life = 1;
@@ -25,7 +26,7 @@ int main(void) {
 		case 1://게임 시작, 모드 선택
 			game->db->func_list.screen_size[0]();
 			game_mode = game->db->func_list.show_menu[1](2);
-			stdnaming(game);
+			//stdnaming(game);
 			break;
 		case 2://학사일정 편집
 			game->db->func_list.screen_size[1]();
@@ -64,7 +65,7 @@ int main(void) {
 	system("pause");
 	return 0;
 }
-
+*/
 
 //test 용
 
@@ -103,3 +104,19 @@ int main(void) {
 //	system("pause");
 //	return;
 //}
+
+
+int main(void) {
+	int a = 0;
+	char name[1];
+	
+	for (int i = 0; ; i++) {
+		editing_file(3);
+
+		
+	}
+
+
+	system("pause");
+	return 0;
+}

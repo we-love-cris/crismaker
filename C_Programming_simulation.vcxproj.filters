@@ -36,6 +36,9 @@
     <ClInclude Include="view.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
+    <ClInclude Include="text_edit.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="acad_day.c">
@@ -54,6 +57,9 @@
       <Filter>소스 파일</Filter>
     </ClCompile>
     <ClCompile Include="view.c">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="text_edit.c">
       <Filter>소스 파일</Filter>
     </ClCompile>
   </ItemGroup>

@@ -25,6 +25,7 @@ int main(void) {
 		case 1://게임 시작, 모드 선택
 			game->db->func_list.screen_size[0]();
 			game_mode = game->db->func_list.show_menu[1](2);
+			stdnaming(game);
 			break;
 		case 2://학사일정 편집
 			game->db->func_list.screen_size[1]();
@@ -34,6 +35,7 @@ int main(void) {
 			break;
 		case 4://게임 종료
 			game->db->func_list.screen_size[1]();
+			return -1;
 			life = 0;
 			break;
 		default:
@@ -65,40 +67,39 @@ int main(void) {
 
 
 //test 용
-/*
-int main(void) {
-	student a = { 0,0,0,0,0,0,0,0, "박용준" };
-	student b = { 0,0,0,0,0,0,0,0, "준용박" };
-	student c = { 0,0,0,0,0,0,0,0, "박박박박" };
-	student d = { 0,0,0,0,0,0,0,0, "박용준용" };
-	student e = { 0,0,0,0,0,0,0,0, "박용준용준" };
-	student f = { 0,0,0,0,0,0,0,0, "박박박김" };
-	student g = { 0,0,0,0,0,0,0,0, "박박박님" };
 
-	student** student_list = (student**)malloc(sizeof(student*) * 7);
-	student_list[0] = &a;
-	student_list[1] = &b;
-	student_list[2] = &c;
-	student_list[3] = &d;
-	student_list[4] = &e;
-	student_list[5] = &f;
-	student_list[6] = &g;
-
-	for (int i = 0; i < 7; i++) {
-		printf("%s\n", student_list[i]->name);
-	}
-
-	hangeul_sort(student_list, 7);
-
-	printf("\n");
-
-	for (int i = 0; i < 7; i++) {
-		printf("%s\n", student_list[i]->name);
-	}
-
-
-
-	system("pause");
-	return;
-}
-*/
+//int main(void) {
+//	student a = { 0,0,0,0,0,0,0,0, "박용준" };
+//	student b = { 0,0,0,0,0,0,0,0, "준용박" };
+//	student c = { 0,0,0,0,0,0,0,0, "박박박박" };
+//	student d = { 0,0,0,0,0,0,0,0, "박용준용" };
+//	student e = { 0,0,0,0,0,0,0,0, "박용준용준" };
+//	student f = { 0,0,0,0,0,0,0,0, "박박박김" };
+//	student g = { 0,0,0,0,0,0,0,0, "박박박님" };
+//
+//	student** student_list = (student**)malloc(sizeof(student*) * 7);
+//	student_list[0] = &a;
+//	student_list[1] = &b;
+//	student_list[2] = &c;
+//	student_list[3] = &d;
+//	student_list[4] = &e;
+//	student_list[5] = &f;
+//	student_list[6] = &g;
+//
+//	for (int i = 0; i < 7; i++) {
+//		printf("%s\n", student_list[i]->name);
+//	}
+//
+//	hangeul_sort(student_list, 7);
+//
+//	printf("\n");
+//
+//	for (int i = 0; i < 7; i++) {
+//		printf("%s\n", student_list[i]->name);
+//	}
+//
+//
+//
+//	system("pause");
+//	return;
+//}

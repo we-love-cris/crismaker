@@ -147,6 +147,7 @@
     <ClInclude Include="util.h" />
     <ClInclude Include="view.h" />
     <ClInclude Include="text_edit.h" />
+    <ClInclude Include="play_game.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="acad_day.c" />
@@ -156,6 +157,7 @@
     <ClCompile Include="util.c" />
     <ClCompile Include="view.c" />
     <ClCompile Include="text_edit.c" />
+    <ClCompile Include="play_game.c" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

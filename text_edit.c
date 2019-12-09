@@ -107,9 +107,14 @@ int editing_file(int prev_number) {//파일 수정
 			cursor++;
 			break;
 		}
+
+		text_show(nowline);
+
+		/*
 		gotoxy(lines, 1);
 		printf("%s\t%d\n", nowline->content, cursor);
 		gotoxy(cursor, lines);
+		*/
 		/*
 		if (!is_hangeul((char)input)) {
 			printf("%s\n", nowline->content);
@@ -229,4 +234,42 @@ int is_hangeul(int what) {
 		return 0;
 	}
 	return 1;
+}
+
+void text_show(ll* line) {
+	ll* nowline = line;
+	int y = 1;
+
+	//미완
+	gotoxy(1, y);
+	//적절한 좌표로 이동
+
+	while (nowline->prev != NULL) {
+		nowline = nowline->prev;
+	}
+	y = printline(nowline->content, y);
+	while (nowline->next != NULL) {
+		nowline = nowline->next;
+		y = printline(nowline->content, y);
+		y++;
+	}
+
+	return;
+}
+
+int printline(char* content, int y) {
+	int i = 0;
+	char temp = '0';
+
+	gotoxy(1, y);
+	for (i = 0; temp != '\0'; i++) {
+		temp = content[i];
+		printf("%c", temp);
+		if (!(i % 100) && i) {
+			y++;
+			gotoxy(1, y);
+		}
+	}
+
+	return y;
 }

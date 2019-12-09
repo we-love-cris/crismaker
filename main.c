@@ -5,6 +5,7 @@
 #include "domain.h"
 #include "acad_day.h"
 #include "text_edit.h"
+#include "play_game.h"
 
 /*
 int main(void) {
@@ -26,6 +27,14 @@ int main(void) {
 		case 1://게임 시작, 모드 선택
 			game->db->func_list.screen_size[0]();
 			game_mode = game->db->func_list.show_menu[1](2);
+			if (game_mode == 1) {
+				status->type = PLAYER_PROF;
+				play_game_prof(game);
+			}
+			else if (game_mode == 2) {
+				status->type = PLAYER_STUDENT;
+				play_game_std(game);
+			}
 			//stdnaming(game);
 			break;
 		case 2://학사일정 편집
@@ -43,19 +52,6 @@ int main(void) {
 			life = 0;
 			break;
 		}
-		//교수 및 학생 모드 입력받기
-
-		//이름 입력받기
-
-		//게임 시작 앞선 초기화 값들 초기화
-		//플레이어에 관련한 정보 입력 및 모드 확정
-
-		//학사 일정 수정 입력받기
-
-		//학사 관련 정보 입력
-
-		//게임 플레이
-
 
 
 

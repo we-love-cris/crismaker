@@ -1,0 +1,12 @@
+name: push
+on: [push]
+
+jobs:
+  lint:
+    name: lint
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v1
+      - uses: CyberZHG/github-action-cpp-lint@0.0.2
+        with:
+          args: "--filter=-legal/copyright,-readability/casting,-build/header_guard *.c *.h"

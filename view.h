@@ -39,3 +39,6 @@ void v_attend(int std_no, int isAttend, int isWake);
 void v_prof_status(status* game);
 
 void v_end_game_p(char* score);
+
+void v_main_game_show_s(status* game, int* work);
+void v_std_status(status* game);

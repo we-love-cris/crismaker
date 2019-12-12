@@ -34,7 +34,7 @@ int main(void) {
 			}
 			else if (game_mode == 2) {
 				game->type = PLAYER_STUDENT;
-				//play_game_std(game);
+				play_game_std(game);
 			}
 			//stdnaming(game);
 			break;

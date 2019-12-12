@@ -33,18 +33,22 @@ int play_game_std(status* game) {//학생 모드의 메인
 	int week = 0;
 	int does = 0;
 	int over = 0;
-	int* work[6];
+	int work[6];
 	int isProgress = 0;
+	int ret = 0;
 
 	memset(work, 0, sizeof(work));
+	work[0] = 1; work[1] = 1; work[2] = 1; work[3] = 1; work[5] = 1;
 
+	start_game_s(game);
 	for (week = 0; week < ACADEMIC_WEEK; week++) {
 		start_day_s(game, week, work);
 		
 		while (game->student_list[game->std_no]->move > 0) {
+			v_main_game_show_s(game, work);
 			isProgress = figureChatorClass(game->pp);
-			does = do_what_s(int* work);
-			s_do(does, work, isProgress);
+			does = do_what_s(work);
+			s_do(game, does, isProgress, work);
 			over = s_endturn(game);
 			if (over) {
 
@@ -58,6 +62,8 @@ int play_game_std(status* game) {//학생 모드의 메인
 		}
 		nextDay_s(game);
 	}
+
+	//ret = 결과
 }
 
 void start_day_p(status* game, int week, int* work) {
@@ -73,6 +79,9 @@ void start_day_p(status* game, int week, int* work) {
 	move = game->academic_calender[week]->move;
 	attend = game->academic_calender[week]->attend_rate;
 	
+	for (i = 0; i < STD_AMOUNT; i++) {
+		game->student_list[i]->attend_rate = game->academic_calender[game->week]->attend_rate;
+	}
 
 	game->choi->move = move;
 	for (i = 0; i < STD_AMOUNT; i++) { // 학생들 출석시키기
@@ -114,10 +123,6 @@ void start_game_p(status* game) {
 	game->db->func_list.screen_size[1]();
 	v_board();
 	v_main_game_frame_p();
-
-	for (i = 0; i < STD_AMOUNT; i++) {
-		game->student_list[i]->attend_rate = game->academic_calender[game->week]->attend_rate;
-	}
 
 	game->choi->assignment = 0;
 	game->choi->chat = 0;
@@ -371,7 +376,24 @@ int statusCheck_p(status* game) {
 
 }
 
-void start_day_s(status* game, int week) {
+void start_game_s(status* game) {
+	int i = 0;
+
+	game->week = 0;
+
+	game->db->func_list.screen_size[1]();
+	v_board();
+	v_main_game_frame_p();
+
+	game->student_list[game->std_no]->happiness = 90;
+	game->student_list[game->std_no]->attend_count = 0;
+	game->student_list[game->std_no]->progress = 0;
+	game->student_list[game->std_no]->skill = 0;
+	game->student_list[game->std_no]->tired = 0;
+
+	return;
+}
+void start_day_s(status* game, int week, int* work) {
 	int move = 0;
 	int attend = 0;
 	int i = 0;
@@ -386,14 +408,13 @@ void start_day_s(status* game, int week) {
 	game->pp->chat_rate = 10 - doClass;
 
 	
-
-
-
 	move = game->academic_calender[week]->move;
 	attend = game->academic_calender[week]->attend_rate;
 
-
-	game->choi->move = move;
+	for (i = 0; i < STD_AMOUNT; i++) {
+		game->student_list[i]->attend_rate = game->academic_calender[game->week]->attend_rate;
+	}
+	game->student_list[game->std_no]->move = move;
 	for (i = 0; i < STD_AMOUNT; i++) { // 학생들 출석시키기
 		temp = (rand() % 10) + 1;
 		if (temp > game->student_list[i]->attend_rate) {
@@ -440,7 +461,7 @@ int do_what_s(int* work) {
 
 	return temp - '0';
 }
-void s_do(status* game, int does, int isProgress) {
+void s_do(status* game, int does, int isProgress, int* work) {
 	switch (does) {
 	case 1:
 		takeNote_s(game, isProgress);
@@ -452,10 +473,10 @@ void s_do(status* game, int does, int isProgress) {
 		webtoon_s(game);
 		break;
 	case 4:
-		runaway_s(game);
+		runaway_s(game, work);
 		break;
 	case 5:
-		comeback_s(game);
+		comeback_s(game, work);
 		break;
 	case 6:
 		snooze_s(game);
@@ -468,44 +489,81 @@ void takeNote_s(status* game, int isProgress) {
 	game->student_list[game->std_no]->move -= 1;
 	game->student_list[game->std_no]->skill += 5;
 	game->student_list[game->std_no]->progress += (5 * (isProgress + 1));
-	game->student_list[game->std_no]->tired -= 1;
+	game->student_list[game->std_no]->tired += 1;
+
+	return;
 }
 void coding_s(status* game, int isProgress) {
 	game->student_list[game->std_no]->happiness -= 5;
 	game->student_list[game->std_no]->move -= 1;
 	game->student_list[game->std_no]->skill += 5;
 	game->student_list[game->std_no]->progress += (5 * (2 - isProgress));
-	game->student_list[game->std_no]->tired -= 1;
+	game->student_list[game->std_no]->tired += 1;
+
+	return;
 }
 void webtoon_s(status* game) {
 	game->student_list[game->std_no]->happiness += 5;
 	game->student_list[game->std_no]->move -= 1;
-	game->student_list[game->std_no]->tired -= 1;
+	game->student_list[game->std_no]->tired += 1;
+
+	return;
 }
-void runaway_s(status* game) {
+void runaway_s(status* game, int* work) {
+	int i = 0;
 	game->student_list[game->std_no]->move -= 5;
-	game->student_list[game->std_no]->tired -= 5;
+	game->student_list[game->std_no]->tired += 5;
 	game->student_list[game->std_no]->happiness += 10;
 	game->student_list[game->std_no]->isAttend = 0;
+	for (i = 0; i < 6; i++) {
+		work[i] = 0;
+	}
+	work[4] = 1;
+
+	return;
 }
-void comeback_s(status* game) {
+void comeback_s(status* game, int* work) {
+	int i = 0;
 	game->student_list[game->std_no]->move -= 5;
-	game->student_list[game->std_no]->tired -= 5;
+	game->student_list[game->std_no]->tired += 5;
 	game->student_list[game->std_no]->isAttend = 1;
+	for (i = 0; i < 6; i++) {
+		work[i] = 1;
+	}
+	work[4] = 0;
+
+	return;
 }
 void snooze_s(status* game) {
 	game->student_list[game->std_no]->move -= 2;
-	game->student_list[game->std_no]->tired += 10;
+	game->student_list[game->std_no]->tired -= 10;
 	game->student_list[game->std_no]->happiness += 3;
+
+	return;
 }
 
+void evening_day(status* game) {
+
+}
 void study_s(status* game); // 집에 가서 공부
 void drunk_s(status* game); // 집에 가서 음주
 void sleep_s(status* game); // 집에 가서 수면
 
+
+
 int statusCheck_s(status* game) {
 	if (game->student_list[game->std_no]->happiness <= 0) return 1;
-	if (game->student_list[game->std_no]->tire <= 0) return 1;
+	if (game->student_list[game->std_no]->tired >= 100) return 1;
 
 	return 0;
+}
+
+void endClass_s(status* game) {
+
+}
+void nextDay_s(status* game) {
+
+}
+void endSemester_s(status* game) {
+
 }

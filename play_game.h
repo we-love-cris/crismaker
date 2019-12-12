@@ -52,18 +52,19 @@ void configureWork(player_p* choi, int* work);
 
 int statusCheck_p(status* game); // 게임오버 조건을 테스트
 
+void start_game_s(status* game);
 void start_day_s(status* game, int week, int* work);
 int figureChatorClass(prof* pp);
 int s_endturn(status* game);
 
 int do_what_s(int* work);
-void s_do(status* game, int does, int isProgress);
+void s_do(status* game, int does, int isProgress, int* work);
 
 void takeNote_s(status* game, int isProgress); // 노트 필기하기
 void coding_s(status* game, int isProgress); // 개인 코딩하기
 void webtoon_s(status* game); // 웹툰 보기
-void runaway_s(status* game); // 출튀하기
-void comeback_s(status* game); // 출튀했다 돌아오기
+void runaway_s(status* game, int* work); // 출튀하기
+void comeback_s(status* game, int* work); // 출튀했다 돌아오기
 void snooze_s(status* game); // 졸기
 void configure_work_s(status* game, int* work);
 

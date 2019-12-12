@@ -301,3 +301,70 @@ void v_end_game_p(char* score) {
 	while(temp != 13) temp = getch();
 
 }
+
+void v_main_game_show_s(status* game, int* work) {
+	int i = 0;
+	int y = 0;
+
+	for (i = 0; i < STD_AMOUNT; i++) {
+		v_attend(i, game->student_list[i]->isAttend, game->student_list[i]->isWake);
+	}
+	if (game->student_list[game->std_no]->isAttend) {
+		int x = game->std_no % 3;
+		int yy = game->std_no / 3;
+
+		switch (x) {
+		case 0: x = 22; break;
+		case 1: x = 50; break;
+		case 2: x = 78; break;
+		}
+
+		switch (yy) {
+		case 0: yy = 10; break;
+		case 1: yy = 16; break;
+		case 2: yy = 22; break;
+		case 3: yy = 28; break;
+		}
+		gotoxy(x, yy); printf("★");
+	}
+
+	y = 30;
+	for (i = 5; i >= 0; i--) {
+		if (work[i]) {
+			gotoxy(2, y);
+			switch (i) {
+			case 0: printf("1. 노트필기하기"); break;
+			case 1: printf("2. 개인코딩하기"); break;
+			case 2: printf("3. 웹툰 보기   "); break;
+			case 3: printf("4. 출튀하기    "); break;
+			case 4: printf("5. 출튀복귀    "); break;
+			case 5: printf("6. 졸기        "); break;
+			}
+			y--;
+		}
+	}
+	for (y; y >= 22; y--) {
+		gotoxy(2, y); printf("               ");
+	}
+	v_std_status(game);
+
+
+}
+
+void v_std_status(status* game) {
+	int x = 3, y = 32;
+	int week = game->week;
+	student* me = game->student_list[game->std_no];
+	
+	gotoxy(x, y); printf("<학생 %s 정보>", me->name), y++;
+	gotoxy(x, y); printf("행동력 : %d", me->move); y++;
+	gotoxy(x, y); printf("행복도 : %d", me->happiness); y++;
+	gotoxy(x, y); printf("진도   : %d", me->progress); y++;
+	gotoxy(x, y); printf("실력   : %d", me->skill); y++;
+	gotoxy(x, y); printf("피로도 : %d", me->tired); y++;
+
+	x = 50; y = 32;
+	gotoxy(x, y); printf("<%d 주차 정보>", week + 1); y++;
+	gotoxy(x, y); printf("수업 내용   : %-10s", util_day(game->academic_calender[week]->type)); y++;
+	gotoxy(x, y); printf("예상 출석률 : %d0%%", game->academic_calender[week]->attend_rate); y++;
+}

@@ -7,7 +7,7 @@
 #include "text_edit.h"
 #include "play_game.h"
 
-/*
+
 int main(void) {
 	//선언 및 초기화
 	int life = 1;
@@ -28,17 +28,20 @@ int main(void) {
 			game->db->func_list.screen_size[0]();
 			game_mode = game->db->func_list.show_menu[1](2);
 			if (game_mode == 1) {
-				status->type = PLAYER_PROF;
+				game->type = PLAYER_PROF;
+				get_prof_name(game->choi);
 				play_game_prof(game);
 			}
 			else if (game_mode == 2) {
-				status->type = PLAYER_STUDENT;
-				play_game_std(game);
+				game->type = PLAYER_STUDENT;
+				//play_game_std(game);
 			}
 			//stdnaming(game);
 			break;
 		case 2://학사일정 편집
 			game->db->func_list.screen_size[1]();
+			acad_main(game);
+			system("pause");
 			break;
 		case 3://시험문제 수정
 			game->db->func_list.screen_size[1]();
@@ -61,7 +64,7 @@ int main(void) {
 	system("pause");
 	return 0;
 }
-*/
+
 
 //test 용
 
@@ -101,7 +104,7 @@ int main(void) {
 //	return;
 //}
 
-
+/*
 int main(void) {
 	int a = 0;
 	char name[1];
@@ -116,3 +119,27 @@ int main(void) {
 	system("pause");
 	return 0;
 }
+*/
+
+/*
+int main(void) {
+	FILE* fp;
+
+	fp = fopen("Question.txt", "rt");
+	if (fp == NULL) {
+		printf("??\n");
+		system("pause");
+		return 1;
+	}
+	else {
+		fprintf(fp, "asdf\n");
+	}
+
+	fclose(fp);
+
+	printf("why");
+
+	system("pause");
+	return 0;
+}
+*/

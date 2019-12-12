@@ -18,6 +18,30 @@ void v_profvsstd() {
 	gotoxy(16, 9); printf("학 생 모 드");
 }
 
+void v_acad_cal(day** acad_cal) {
+	int i = 0;
+	int type;
+	char* name = (char*)malloc(sizeof(char) * 10);
+	for (i = 0; i < ACADEMIC_WEEK; i++) {
+		type = acad_cal[i]->type;
+		name = util_day(type);
+		gotoxy(17, 4 + 3 * i); printf("%d 주차 : %s", i + 1, name);
+	}
+	free(name);
+	return;
+}
+
+void v_acad_days(day** default_days) {
+	char* name;
+	int i = 0;
+	for (i = 0; i < ACAD_TYPES; i++) {
+		name = util_day(i);
+		gotoxy(70, 7 + 3 * i); printf("%s", name);
+	}
+	free(name);
+	return;
+}
+
 //▶표시하는 녀석
 void v_menu_indi(int chosen, char ch[3]) {
 	int go = 5 + 2 * chosen;
@@ -26,6 +50,26 @@ void v_menu_indi(int chosen, char ch[3]) {
 
 	return;
 }
+void v_week_indi(int chosen, char ch[3]) {
+	int go = 1 + 3 * chosen;
+	gotoxy(12, go);
+	printf("%s", ch);
+
+	return;
+}
+void v_toWeek_indi(int chosen, char ch[3]) {
+	int go = 4 + 3 * chosen;
+	gotoxy(65, go);
+	printf("%s", ch);
+
+	return;
+}
+void v_toWeek_info(int chosen) {
+	gotoxy(2, 32);
+
+	//아직 미완성
+}
+
 
 //메뉴 화면이 나올 테두리 표시하기
 void v_menusquare() {
@@ -97,6 +141,13 @@ void v_clear_menusquare() {
 	return;
 }
 
+void v_clear_right() {
+	int i = 0;
+	for (i = 1; i < VIEW_MAIN_VER; i++) {
+		gotoxy(50, i); printf("                                                  ");
+	}
+}
+
 void v_clearall() {
 	int i = 0;
 
@@ -104,4 +155,89 @@ void v_clearall() {
 	printf("                                                                                                         \n");
 	
 	return;
+}
+
+void v_main_game_show_p(status* game) {
+	int i = 0;
+
+	for (i = 0; i < STD_AMOUNT; i++) {
+		v_attend(i, game->student_list[i]->isAttend);
+	}
+	
+	v_prof_status(game);
+
+}
+
+void v_main_game_frame_p() {
+	int i = 0, j = 0, k = 0;
+	int x[3] = { 17, 45, 73 };
+	int y = 0;
+
+	y = 6;
+	for (i = 0; i < 4; i++) {
+		for (j = 0; j < 3; j++) {
+			gotoxy(x[j], y); printf("┌────┐");
+		}
+		y++;
+		for (j = 0; j < 2; j++) {
+			for (k = 0; k < 3; k++) {
+				gotoxy(x[k], y); printf("│        │");
+			}
+			y++;
+		}
+		for (j = 0; j < 3; j++) {
+			gotoxy(x[j], y); printf("└────┘");
+		}
+		y += 3;
+	}
+
+	return;
+}
+
+void v_attend(int std_no, int isAttend) {
+	//10 17 24 31
+	//22,23 50,51 78,79
+	
+
+	int x = std_no % 3;
+	int y = std_no / 3;
+
+	switch (x) {
+	case 0: x = 22; break;
+	case 1: x = 50; break;
+	case 2: x = 78; break;
+	}
+
+	switch (y) {
+	case 0: y = 10; break;
+	case 1: y = 16; break;
+	case 2: y = 22; break;
+	case 3: y = 28; break;
+	}
+
+	gotoxy(x, y);
+	if(isAttend) printf("○");
+	else printf("  ");
+
+	return;
+}
+
+void v_prof_status(status* game) {
+	int x = 3, y = 32;
+	int week = game->week;
+
+	gotoxy(x, y); printf("<교수 %s 정보>", game->choi->name); y++;
+	gotoxy(x, y); printf("행동력    : %-5d", game->choi->move); y++;
+	gotoxy(x, y); printf("현재 진도 : %-5d", game->choi->progress); y++;
+	gotoxy(x, y); printf("학생 흥미 : %-5d", game->choi->chat); y++;
+	gotoxy(x, y); printf("시험 횟수 : %-5d", game->choi->test); y++;
+	gotoxy(x, y); printf("팀플 횟수 : %-5d", game->choi->assignment); y++;
+	
+	x = 50; y = 32;
+	gotoxy(x, y); printf("<%d 주차 정보>", week + 1); y++;
+	gotoxy(x, y); printf("수업 내용   : %-10s", util_day(game->academic_calender[week]->type)); y++;
+	gotoxy(x, y); printf("예상 출석률 : %d0%%", game->academic_calender[week]->attend_rate); y++;
+	gotoxy(x, y); printf(""); y++;
+	gotoxy(x, y); printf(""); y++;
+	gotoxy(x, y); printf(""); y++;
 }

@@ -30,15 +30,15 @@
 #define MENU_HOR 40
 #define MENU_VER 20
 
-#define CLASS_ATTEND_RATE 80
+#define CLASS_ATTEND_RATE 8
 #define CLASS_MOVE 30
-#define OT_ATTEND_RATE 60
+#define OT_ATTEND_RATE 6
 #define OT_MOVE 10
-#define TP_ATTEND_RATE 90
+#define TP_ATTEND_RATE 9
 #define TP_MOVE 10
-#define TEST_ATTEND_RATE 90
+#define TEST_ATTEND_RATE 9
 #define TEST_MOVE 5
-#define FESTIV_ATTEND_RATE 30
+#define FESTIV_ATTEND_RATE 3
 #define FESTIV_MOVE 30
 #define HOLI_ATTEND_RATE 0
 #define HOLI_MOVE 0

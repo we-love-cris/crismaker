@@ -70,3 +70,5 @@ void game_screen();
 void gotoxy(int x, int y);
 void textcolor(int text_color, int background_color);
 void CursorView(char show);
+
+char* util_day(int i);

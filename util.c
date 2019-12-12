@@ -226,3 +226,32 @@ void CursorView(char show){//커서숨기기
 	SetConsoleCursorInfo(hConsole, &ConsoleCursor);
 	return;
 }
+
+char* util_day(int i) {
+	char* name;
+
+	name = (char*)malloc(sizeof(char) * 10);
+
+	switch (i) {
+	case 0:
+		strcpy(name, "수업  \0");
+		break;
+	case 1:
+		strcpy(name, "OT    \0");
+		break;
+	case 2:
+		strcpy(name, "팀플  \0");
+		break;
+	case 3:
+		strcpy(name, "시험  \0");
+		break;
+	case 4:
+		strcpy(name, "축제  \0");
+		break;
+	case 5:
+		strcpy(name, "공휴일\0");
+		break;
+	}
+
+	return name;
+}

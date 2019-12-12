@@ -5,6 +5,7 @@
 #include <Windows.h>
 #include <conio.h>
 #include <string.h>
+#include <time.h>
 
 // 상수값들 include
 #include "constants.h"
@@ -38,6 +39,8 @@ typedef struct student {// 최교수님이 되어 만날 학생들
 	int skill; //실력, 질문할 확률
 	int tired; //피로도
 	int type; //1(PLAYER_STUDENT)이면 학생, 플레이어가 아니면 2(OTHER_STUDENT)
+	int isAttend;
+	int isWake;
 
 	char* name;
 } student;
@@ -55,6 +58,7 @@ typedef struct Day {
 	int attend_rate; //예상 출석률
 	int move; //행동력
 	int type;
+
 	/*
 	//0. 일반 수업
 	//1. OT

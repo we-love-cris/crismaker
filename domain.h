@@ -12,3 +12,6 @@ int select_profvsstd(int amount);
 
 //1~max까지의 메뉴를 선택하는 함수
 int choose_menu(int max);
+
+
+void get_prof_name(player_p* choi);

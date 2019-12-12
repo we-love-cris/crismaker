@@ -13,6 +13,7 @@ int main(void) {
 	int life = 1;
 	int menu_select = 0;
 	int game_mode = 0;
+	int over = 1;
 
 	status* game = init_status();
 	init_consol(game);
@@ -34,14 +35,22 @@ int main(void) {
 			}
 			else if (game_mode == 2) {
 				game->type = PLAYER_STUDENT;
-				play_game_std(game);
+				get_std_name(game->student_list[game->std_no]);
+				over = play_game_std(game);
+				if (!over) {
+					v_clearall(); Sleep(1000);
+					gotoxy(31, 15); printf("무엇이 문제였을까요... 행복...? 피곤...?"); Sleep(1000);
+					gotoxy(41, 18); printf("당신은 휴학했습니다"); Sleep(1000);
+					gotoxy(46, 21); printf("Press Enter");
+					int temp = 0;
+					while (temp != 13) temp = getch();
+				}
 			}
 			//stdnaming(game);
 			break;
 		case 2://학사일정 편집
 			game->db->func_list.screen_size[1]();
 			acad_main(game);
-			system("pause");
 			break;
 		case 3://시험문제 수정
 			game->db->func_list.screen_size[1]();

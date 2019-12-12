@@ -15,3 +15,4 @@ int choose_menu(int max);
 
 
 void get_prof_name(player_p* choi);
+void get_std_name(student* me);

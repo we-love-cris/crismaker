@@ -10,9 +10,11 @@ int acad_main(status* game) {
 		v_board();
 		v_acad_cal(game->academic_calender);
 		chosenWeek = choose_week(chosenWeek, ACADEMIC_WEEK);
+		if (chosenWeek == -100) return 0;
 		gotoxy(60, 4); printf("<어떤 일정으로 바꿀까요?>");
 		v_acad_days(game->db->default_days);
 		toWeek = choose_toWeek(ACAD_TYPES);
+		if (toWeek == -100) return 0;
 
 		switch (toWeek) {
 		case 1:
@@ -115,8 +117,11 @@ int choose_week(int chosen, int max) {
 		if (chosen < max && (get == DOWN || get == RIGHT)) {//아래나 오른쪽 누르면
 			chosen++;//선택메뉴 증가
 		}
-		else if (chosen > 1 && (get == UP || get == LEFT)) {//위나 왼쪽 누르면
+		else if (chosen > 1 && (get == UP)) {//위누르면
 			chosen--;//선택메뉴 감소
+		}
+		else if (chosen > 1 && (get == LEFT)) {
+			return -100;
 		}
 		v_week_indi(chosen, "▶");
 	}
@@ -135,8 +140,11 @@ int choose_toWeek(int max) {
 		if (chosen < max && (get == DOWN || get == RIGHT)) {//아래나 오른쪽 누르면
 			chosen++;//선택메뉴 증가
 		}
-		else if (chosen > 1 && (get == UP || get == LEFT)) {//위나 왼쪽 누르면
+		else if (chosen > 1 && (get == UP)) {//위누르면
 			chosen--;//선택메뉴 감소
+		}
+		else if (chosen > 1 && (get == LEFT)) {
+			return -100;
 		}
 		v_toWeek_indi(chosen, "▶");
 		v_toWeek_info(chosen);

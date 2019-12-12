@@ -36,9 +36,13 @@ void v_clearall();
 void v_main_game_show_p(status* game, int* work);
 void v_main_game_frame_p();
 void v_attend(int std_no, int isAttend, int isWake);
+void v_gohome();
 void v_prof_status(status* game);
 
 void v_end_game_p(char* score);
 
 void v_main_game_show_s(status* game, int* work);
 void v_std_status(status* game);
+void v_what_prof_do(int isProgress);
+
+void v_end_game_s(char* score);

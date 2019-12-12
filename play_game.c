@@ -45,25 +45,26 @@ int play_game_std(status* game) {//학생 모드의 메인
 		start_day_s(game, week, work);
 		
 		while (game->student_list[game->std_no]->move > 0) {
-			v_main_game_show_s(game, work);
 			isProgress = figureChatorClass(game->pp);
+			v_main_game_show_s(game, work);
+			v_what_prof_do(isProgress);
 			does = do_what_s(work);
 			s_do(game, does, isProgress, work);
 			over = s_endturn(game);
-			if (over) {
-
-			}
+			if (over) return 0;
+			
 		}
 
 		evening_day(game);
 		over = statusCheck_s(game);
-		if (over) {
-
-		}
+		if (over) return 0;
+		
 		nextDay_s(game);
 	}
 
-	//ret = 결과
+	endSemester_s(game);
+
+	return 1;
 }
 
 void start_day_p(status* game, int week, int* work) {
@@ -430,7 +431,7 @@ void start_day_s(status* game, int week, int* work) {
 		game->academic_calender[week]->isTp = 1;
 	}
 
-
+	game->student_list[game->std_no]->attend_count++;
 
 	return;
 
@@ -518,6 +519,7 @@ void runaway_s(status* game, int* work) {
 	for (i = 0; i < 6; i++) {
 		work[i] = 0;
 	}
+	work[3] = 1;
 	work[4] = 1;
 
 	return;
@@ -543,11 +545,47 @@ void snooze_s(status* game) {
 }
 
 void evening_day(status* game) {
+	int temp = 0;
+
+	v_clear_optbox();
+	gotoxy(2, 32); printf("<수업을 마치고 집에 오셨습니다>");
+	gotoxy(2, 33); printf("무엇을 할까요?");
+	gotoxy(2, 34); printf("1. 공부하기");
+	gotoxy(2, 35); printf("2. 술마시기");
+	gotoxy(2, 36); printf("3. 잠자기");
+
+	while (1) {
+		temp = getch();
+		int a = temp - '0';
+		switch (a) {
+		case 1:
+			study_s(game);
+			break;
+		case 2:
+			drunk_s(game);
+			break;
+		case 3:
+			drunk_s(game);
+			break;
+		}
+		if (1 <= a && a <= 3) break;
+	}
 
 }
-void study_s(status* game); // 집에 가서 공부
-void drunk_s(status* game); // 집에 가서 음주
-void sleep_s(status* game); // 집에 가서 수면
+void study_s(status* game) {
+	game->student_list[game->std_no]->happiness -= 10;
+	game->student_list[game->std_no]->progress += 30;
+	game->student_list[game->std_no]->skill += 30;
+	game->student_list[game->std_no]->tired -= 10;
+}
+void drunk_s(status* game) {
+	game->student_list[game->std_no]->happiness += 20;
+	game->student_list[game->std_no]->tired -= 20;
+}
+void sleep_s(status* game) {
+	game->student_list[game->std_no]->happiness += 10;
+	game->student_list[game->std_no]->tired += 40;
+}
 
 
 
@@ -559,11 +597,53 @@ int statusCheck_s(status* game) {
 }
 
 void endClass_s(status* game) {
-
+	v_clear_optbox();
+	v_gohome();
 }
 void nextDay_s(status* game) {
-
+	v_clear_optbox();
+	game->week++;
 }
 void endSemester_s(status* game) {
+	char score[5];
+	int total = 0;
+	int progress = game->student_list[game->std_no]->progress,
+		attend_count = progress = game->student_list[game->std_no]->attend_count,
+		skill = progress = game->student_list[game->std_no]->skill;
+	/*
+	0. progress
+	1. attend_count
+	2. skill
+	3. 
+	4. All
+	*/
+	if (progress < 100) score[0] = 'F';
+	else if (progress < 150) score[0] = 'D';
+	else if (progress < 200) score[0] = 'C';
+	else if (progress < 250) score[0] = 'B';
+	else if (progress < 300) score[0] = 'A';
+	total += ('F' - score[0]);
 
+	if (attend_count < 2) score[1] = 'F';
+	else if (attend_count < 3) score[1] = 'D';
+	else if (attend_count < 4) score[1] = 'C';
+	else if (attend_count < 6) score[1] = 'B';
+	else if (attend_count < 9) score[1] = 'A';
+	total += ('F' - score[1]);
+
+	if (skill < 100) score[2] = 'F';
+	else if (skill < 150) score[2] = 'D';
+	else if (skill < 200) score[2] = 'C';
+	else if (skill <250) score[2] = 'B';
+	else if (skill < 300) score[2] = 'A';
+	total += ('F' - score[2]);
+
+	if (total >= 12) score[4] = 'A';
+	else if (total >= 9) score[4] = 'B';
+	else if (total >= 5) score[4] = 'C';
+	else if (total >= 3) score[4] = 'D';
+	else score[4] = 'F';
+
+
+	v_end_game_s(score);
 }

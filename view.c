@@ -27,6 +27,7 @@ void v_acad_cal(day** acad_cal) {
 		name = util_day(type);
 		gotoxy(17, 4 + 3 * i); printf("%d 주차 : %s", i + 1, name);
 	}
+	gotoxy(17, 4 + 3 * i); printf("나가려면 <-를 누르세요");
 	free(name);
 	return;
 }
@@ -261,6 +262,19 @@ void v_attend(int std_no, int isAttend, int isWake) {
 
 	return;
 }
+void v_gohome() {
+	int x[3] = { 22, 50, 78 };
+	int y[4] = { 10, 16, 22, 28 };
+
+	for (int i = 0; i < 3; i++) {
+		for (int j = 0; j < 4; j++) {
+			gotoxy(x[i], y[j]);
+			printf("  ");
+			gotoxy(x[i] + 2, y[j] + 1);
+			printf("      ");
+		}
+	}
+}
 
 void v_prof_status(status* game) {
 	int x = 3, y = 32;
@@ -357,14 +371,40 @@ void v_std_status(status* game) {
 	student* me = game->student_list[game->std_no];
 	
 	gotoxy(x, y); printf("<학생 %s 정보>", me->name), y++;
-	gotoxy(x, y); printf("행동력 : %d", me->move); y++;
-	gotoxy(x, y); printf("행복도 : %d", me->happiness); y++;
-	gotoxy(x, y); printf("진도   : %d", me->progress); y++;
-	gotoxy(x, y); printf("실력   : %d", me->skill); y++;
-	gotoxy(x, y); printf("피로도 : %d", me->tired); y++;
+	gotoxy(x, y); printf("행동력 : %-5d", me->move); y++;
+	gotoxy(x, y); printf("행복도 : %-5d", me->happiness); y++;
+	gotoxy(x, y); printf("진도   : %-5d", me->progress); y++;
+	gotoxy(x, y); printf("실력   : %-5d", me->skill); y++;
+	gotoxy(x, y); printf("피로도 : %-5d", me->tired); y++;
 
 	x = 50; y = 32;
 	gotoxy(x, y); printf("<%d 주차 정보>", week + 1); y++;
 	gotoxy(x, y); printf("수업 내용   : %-10s", util_day(game->academic_calender[week]->type)); y++;
 	gotoxy(x, y); printf("예상 출석률 : %d0%%", game->academic_calender[week]->attend_rate); y++;
+}
+
+void v_what_prof_do(int isProgress) {
+	gotoxy(50, 35);
+	if (isProgress)
+		printf("현재 교수님 : 수업 중");
+	else {
+		printf("현재 교수님 : 잡담 중");
+	}
+}
+
+void v_end_game_s(char* score) {
+	int temp = 0;
+	v_clearall();
+
+	gotoxy(46, 5); printf("진도 점수 : ");
+	Sleep(500); printf("%c", score[0]); Sleep(500);
+	gotoxy(46, 7); printf("출석 점수 : ");
+	Sleep(500); printf("%c", score[1]); Sleep(500);
+	gotoxy(46, 9); printf("실력 점수 : ");
+	Sleep(500); printf("%c", score[2]); Sleep(500);
+	gotoxy(46, 13); printf("최종 평가 : ");
+	Sleep(1000); printf("%c", score[4]);
+
+	gotoxy(46, 20); printf("Press enter");
+	while (temp != 13) temp = getch();
 }

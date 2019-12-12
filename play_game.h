@@ -16,6 +16,14 @@ int play_game_prof(status* game);
 9. 쪽지시험 공지 -1
 */
 int play_game_std(status* game);
+/*
+1. 노트 필기하기
+2. 개인 코딩하기
+3. 웹툰 보기
+4. 출튀하기
+5. 출튀 복귀하기
+6. 졸기
+*/
 
 void start_day_p(status* game, int week, int* work);
 void start_game_p(status* game);
@@ -43,3 +51,29 @@ void snooze_p(student** std_list);
 void configureWork(player_p* choi, int* work);
 
 int statusCheck_p(status* game); // 게임오버 조건을 테스트
+
+void start_day_s(status* game, int week, int* work);
+int figureChatorClass(prof* pp);
+int s_endturn(status* game);
+
+int do_what_s(int* work);
+void s_do(status* game, int does, int isProgress);
+
+void takeNote_s(status* game, int isProgress); // 노트 필기하기
+void coding_s(status* game, int isProgress); // 개인 코딩하기
+void webtoon_s(status* game); // 웹툰 보기
+void runaway_s(status* game); // 출튀하기
+void comeback_s(status* game); // 출튀했다 돌아오기
+void snooze_s(status* game); // 졸기
+void configure_work_s(status* game, int* work);
+
+void evening_day(status* game);
+void study_s(status* game); // 집에 가서 공부
+void drunk_s(status* game); // 집에 가서 음주
+void sleep_s(status* game); // 집에 가서 수면
+
+int statusCheck_s(status*game); // 게임오버 조건을 체크한다
+
+void endClass_s(status* game); // 수업이 끝났을 때
+void nextDay_s(status* game); // 하루가 끝났을 때
+void endSemester_s(status* game); // 학기가 끝났을 때

@@ -73,6 +73,10 @@ void make_player_p(player_p* choi) {
 	choi->test = 0;
 	choi->type = PLAYER_PROF;
 
+	choi->didWake = 0;
+	choi->didAnnSt = 0;
+	choi->didAnnTp = 0;
+
 	choi->name = NULL;
 
 	return;
@@ -90,6 +94,8 @@ void make_day(day* wk) {
 	wk->attend_rate = 0;
 	wk->move = 0;
 	wk->type = 0;
+	wk->isSt = 0;
+	wk->isTp = 0;
 
 	return;
 }

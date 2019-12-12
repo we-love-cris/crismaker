@@ -43,9 +43,12 @@ int choose_menu(int max) {
 void get_prof_name(player_p* choi) {
 	int a = -1, i = 0;
 	char temp[100] = "";
+
+	v_clear_menusquare();
+
 	gotoxy(5, 5); printf("플레이할 교수의 이름을 정해 주세요");
 	while (a == -1) {
-		gotoxy(10, 7);
+		gotoxy(13, 7);
 		a = get_string(temp, STRING_LENGTH);
 		Sleep(1000);
 	}

@@ -87,11 +87,13 @@ void make_default_days(day** default_days) {
 	default_days[5]->attend_rate = TP_ATTEND_RATE;
 	default_days[5]->move = TP_MOVE;
 	default_days[5]->type = 2;
+	default_days[5]->isTp = 1;
 
 	//시험
 	default_days[7]->attend_rate = TEST_ATTEND_RATE;
 	default_days[7]->move = TEST_MOVE;
 	default_days[7]->type =3 ;
+	
 
 	return;
 }

@@ -30,9 +30,12 @@ void v_row(int height, int amount);
 void v_ver(int start, int end, int height, int amount);
 void v_clear_menusquare();
 void v_clear_right();
+void v_clear_optbox();
 void v_clearall();
 
-void v_main_game_show_p(status* game);
+void v_main_game_show_p(status* game, int* work);
 void v_main_game_frame_p();
-void v_attend(int std_no, int isAttend);
+void v_attend(int std_no, int isAttend, int isWake);
 void v_prof_status(status* game);
+
+void v_end_game_p(char* score);

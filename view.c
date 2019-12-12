@@ -148,22 +148,51 @@ void v_clear_right() {
 	}
 }
 
+void v_clear_optbox() {
+	int i = 32;
+	for (i = 32; i < VIEW_INFO_VER + 32; i++) {
+		gotoxy(2, i); printf("                                                                                                         ");
+	}
+}
+
 void v_clearall() {
 	int i = 0;
 
 	for(i = 0; i < 50; i++)
-	printf("                                                                                                         \n");
+	printf("                                                                                                         ");
 	
 	return;
 }
 
-void v_main_game_show_p(status* game) {
+void v_main_game_show_p(status* game, int* work) {
 	int i = 0;
+	int y = 0;
 
 	for (i = 0; i < STD_AMOUNT; i++) {
-		v_attend(i, game->student_list[i]->isAttend);
+		v_attend(i, game->student_list[i]->isAttend, game->student_list[i]->isWake);
 	}
-	
+
+	y = 30;
+	for (i = 8; i >= 0; i--) {
+		if (work[i]) {
+			gotoxy(2, y);
+			switch (i) {
+			case 0: printf("1. 강의하기    "); break;
+			case 1: printf("2. 잡담하기    "); break;
+			case 2: printf("3. 실습하기    "); break;
+			case 3: printf("4. 출석하기    "); break;
+			case 4: printf("5. 쪽지시험    "); break;
+			case 5: printf("6. 깨우기      "); break;
+			case 6: printf("7. 질문 답하기 "); break;
+			case 7: printf("8. 팀플 공지   "); break;
+			case 8: printf("9. 쪽지시험공지"); break;
+			}
+			y--;
+		}
+	}
+	for (y; y >= 22; y--) {
+		gotoxy(2, y); printf("               ");
+	}
 	v_prof_status(game);
 
 }
@@ -194,7 +223,7 @@ void v_main_game_frame_p() {
 	return;
 }
 
-void v_attend(int std_no, int isAttend) {
+void v_attend(int std_no, int isAttend, int isWake) {
 	//10 17 24 31
 	//22,23 50,51 78,79
 	
@@ -216,8 +245,19 @@ void v_attend(int std_no, int isAttend) {
 	}
 
 	gotoxy(x, y);
-	if(isAttend) printf("○");
-	else printf("  ");
+	if (isAttend) {
+		printf("○");
+		if (isWake) {
+			gotoxy(x + 2, y + 1); printf("      ");
+		}
+		else {
+			gotoxy(x + 2, y + 1); printf("Zzz...");
+		}
+	}
+	else {
+		printf("  ");
+		gotoxy(x + 2, y + 1); printf("      ");
+	}
 
 	return;
 }
@@ -240,4 +280,24 @@ void v_prof_status(status* game) {
 	gotoxy(x, y); printf(""); y++;
 	gotoxy(x, y); printf(""); y++;
 	gotoxy(x, y); printf(""); y++;
+}
+
+void v_end_game_p(char* score) {
+	int temp = 0;
+	v_clearall();
+
+	gotoxy(46, 5); printf("진도 점수 : ");
+	Sleep(500); printf("%c", score[0]); Sleep(500);
+	gotoxy(46, 7); printf("흥미 점수 : ");
+	Sleep(500); printf("%c", score[1]); Sleep(500);
+	gotoxy(46, 9); printf("팀플 평가 : ");
+	Sleep(500); printf("%c", score[2]); Sleep(500);
+	gotoxy(46, 11); printf("시험 평가 : ");
+	Sleep(500); printf("%c", score[3]); Sleep(500);
+	gotoxy(46, 13); printf("최종 평가 : ");
+	Sleep(1000); printf("%c", score[4]);
+
+	gotoxy(46, 20); printf("Press enter");
+	while(temp != 13) temp = getch();
+
 }

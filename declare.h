@@ -27,6 +27,10 @@ typedef struct player_professor {// 플레이어가 플레이할 교수. 이름�
 	int test; //시험 본 횟수
 	int type; //0(PLAYER_PROF)이면 교수
 
+	int didWake; // 학생 깨웠는지 flag
+	int didAnnSt; // 쪽지시험 공지 flag
+	int didAnnTp; // 팀플 공지 flag
+
 	char* name;
 } player_p;
 
@@ -58,6 +62,8 @@ typedef struct Day {
 	int attend_rate; //예상 출석률
 	int move; //행동력
 	int type;
+	int isSt;
+	int isTp;
 
 	/*
 	//0. 일반 수업

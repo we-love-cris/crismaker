@@ -1,4 +1,4 @@
-﻿#pragma once
+#pragma once
 
 //기본 라이브러리 및 상수값, 구조체 include
 #include "declare.h"
@@ -70,3 +70,5 @@ void game_screen();
 void gotoxy(int x, int y);
 void textcolor(int text_color, int background_color);
 void CursorView(char show);
+
+char* util_day(int i);

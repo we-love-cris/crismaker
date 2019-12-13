@@ -1,7 +1,30 @@
-﻿#include "text_edit.h"
+#include "text_edit.h"
 
 int text_edit_main(status* game) {
-	
+	int read = 0;
+	int amount = 0;
+	int input = -1;
+	FILE* fp = NULL;
+	CursorView(1);
+	fp = fopen("menu.txt", "r");
+	gotoxy(2, 3); printf("문제의 목록입니다");
+	while (!feof(fp)) {
+		fscanf(fp, "%d", &read);
+		gotoxy(2, amount + 5); printf("%d번", read);
+		amount++;
+	}
+
+	gotoxy(2, amount + 6); printf("총 문제 %d개", amount);
+	while (input == -1) {
+		gotoxy(2, amount + 7); printf("몇 번을 수정할까요? ");
+		input = get_unsigned_int();
+	}
+	editing_file(input);
+
+	fclose(fp);
+	CursorView(0);
+
+	return 0;
 }
 
 int editing_file(int prev_number) {//파일 수정
@@ -12,8 +35,23 @@ int editing_file(int prev_number) {//파일 수정
 	ll pare = { NULL, NULL, NULL, 100 };
 	ll* nowline;
 
-	if (0) {//파일 열기
-		;
+	v_clearall();
+
+	if (prev_number) {//파일 열기
+		pare.content = (char*)calloc(100, sizeof(char));
+		pare.content[0] = '\0';
+		nowline = &pare;
+		char name[6] = { 'a', '.', 't', 'x', 't', '\0' };
+		name[0] = (char)(prev_number + '0');
+		FILE* temp = NULL;
+		temp = fopen(name, "r");
+		fscanf(temp, "%s", nowline->content);
+		while (!feof(temp)) {
+			nowline = making_ll(nowline);
+			fscanf(temp, "%s", nowline->content);
+		}
+		cursor += strlen(nowline->content);
+		fclose(temp);
 	}
 	else {//문제를 새로 만드는 경우
 		pare.content = (char*)calloc(100, sizeof(char));
@@ -23,6 +61,7 @@ int editing_file(int prev_number) {//파일 수정
 	
 	//파일 에디팅
 	while (input != 27) {
+		text_show(nowline);
 		input = get_input();
 		switch (input) {
 		case 8: //backspace
@@ -53,6 +92,8 @@ int editing_file(int prev_number) {//파일 수정
 			}
 			nowline = nowline->next;
 			cursor = 1;
+			break;
+		case 27:
 			break;
 		case 1000: //up
 			if (nowline->prev == NULL) {
@@ -108,7 +149,7 @@ int editing_file(int prev_number) {//파일 수정
 			break;
 		}
 
-		text_show(nowline);
+		
 
 		/*
 		gotoxy(lines, 1);
@@ -122,6 +163,8 @@ int editing_file(int prev_number) {//파일 수정
 		*/
 
 	}
+
+	making_file(prev_number, nowline);
 
 	
 }
@@ -162,8 +205,21 @@ void deleting_ll(ll* line) {
 	return;
 }
 
-int making_file() {//파일 없을 때 만들기
+int making_file(int prev_number, ll* nowline) {
+	while (nowline->prev != NULL) {
+		nowline = nowline->prev;
+	}
 
+	char name[6] = { 'a', '.', 't', 'x', 't', '\0' };
+	name[0] = (char)(prev_number + '0');
+	FILE* temp = NULL;
+	temp = fopen(name, "w");
+	do {
+		fprintf(temp, "%s\n", nowline->content);
+		nowline = nowline->next;
+	} while (nowline != NULL);
+	
+	fclose(temp);
 }
 
 int get_input() {
@@ -247,7 +303,7 @@ void text_show(ll* line) {
 	while (nowline->prev != NULL) {
 		nowline = nowline->prev;
 	}
-	y = printline(nowline->content, y);
+	y = printline(nowline->content, y); y++;
 	while (nowline->next != NULL) {
 		nowline = nowline->next;
 		y = printline(nowline->content, y);

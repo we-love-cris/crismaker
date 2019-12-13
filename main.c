@@ -1,4 +1,4 @@
-﻿#include "declare.h"
+#include "declare.h"
 #include "util.h"
 #include "init.h"
 #include "view.h"
@@ -7,12 +7,13 @@
 #include "text_edit.h"
 #include "play_game.h"
 
-/*
+
 int main(void) {
 	//선언 및 초기화
 	int life = 1;
 	int menu_select = 0;
 	int game_mode = 0;
+	int over = 1;
 
 	status* game = init_status();
 	init_consol(game);
@@ -28,20 +29,32 @@ int main(void) {
 			game->db->func_list.screen_size[0]();
 			game_mode = game->db->func_list.show_menu[1](2);
 			if (game_mode == 1) {
-				status->type = PLAYER_PROF;
+				game->type = PLAYER_PROF;
+				get_prof_name(game->choi);
 				play_game_prof(game);
 			}
 			else if (game_mode == 2) {
-				status->type = PLAYER_STUDENT;
-				play_game_std(game);
+				game->type = PLAYER_STUDENT;
+				get_std_name(game->student_list[game->std_no]);
+				over = play_game_std(game);
+				if (!over) {
+					v_clearall(); Sleep(1000);
+					gotoxy(31, 15); printf("무엇이 문제였을까요... 행복...? 피곤...?"); Sleep(1000);
+					gotoxy(41, 18); printf("당신은 휴학했습니다"); Sleep(1000);
+					gotoxy(46, 21); printf("Press Enter");
+					int temp = 0;
+					while (temp != 13) temp = getch();
+				}
 			}
 			//stdnaming(game);
 			break;
 		case 2://학사일정 편집
 			game->db->func_list.screen_size[1]();
+			acad_main(game);
 			break;
 		case 3://시험문제 수정
 			game->db->func_list.screen_size[1]();
+			text_edit_main(game);
 			break;
 		case 4://게임 종료
 			game->db->func_list.screen_size[1]();
@@ -61,7 +74,7 @@ int main(void) {
 	system("pause");
 	return 0;
 }
-*/
+
 
 //test 용
 
@@ -101,7 +114,7 @@ int main(void) {
 //	return;
 //}
 
-
+/*
 int main(void) {
 	int a = 0;
 	char name[1];
@@ -116,3 +129,27 @@ int main(void) {
 	system("pause");
 	return 0;
 }
+*/
+
+/*
+int main(void) {
+	FILE* fp;
+
+	fp = fopen("Question.txt", "rt");
+	if (fp == NULL) {
+		printf("??\n");
+		system("pause");
+		return 1;
+	}
+	else {
+		fprintf(fp, "asdf\n");
+	}
+
+	fclose(fp);
+
+	printf("why");
+
+	system("pause");
+	return 0;
+}
+*/

@@ -1,10 +1,11 @@
-﻿#pragma once
+#pragma once
 //선언된 공용 라이브러리
 #include <stdio.h>
 #include <stdlib.h>
 #include <Windows.h>
 #include <conio.h>
 #include <string.h>
+#include <time.h>
 
 // 상수값들 include
 #include "constants.h"
@@ -17,7 +18,7 @@
 typedef int(*menusptr)(int);
 typedef void(*screenptr)();
 
-typedef struct player_professor {// 플레이어가 플레이할 교수. 이름은 아마 최운정? ㅎㅎ
+typedef struct player_professor {// 플레이어가 플레이할 교수.
 	//선언 메모리 관리 해주기
 	int assignment; //과제 낸 횟수
 	int chat; //잡담
@@ -26,10 +27,14 @@ typedef struct player_professor {// 플레이어가 플레이할 교수. 이름�
 	int test; //시험 본 횟수
 	int type; //0(PLAYER_PROF)이면 교수
 
+	int didWake; // 학생 깨웠는지 flag
+	int didAnnSt; // 쪽지시험 공지 flag
+	int didAnnTp; // 팀플 공지 flag
+
 	char* name;
 } player_p;
 
-typedef struct student {// 최교수님이 되어 만날 학생들
+typedef struct student {// 교수님이 되어 만날 학생들
 	int attend_count; //출석 횟수
 	int attend_rate; //출셕률
 	int happiness; //행복도
@@ -38,6 +43,8 @@ typedef struct student {// 최교수님이 되어 만날 학생들
 	int skill; //실력, 질문할 확률
 	int tired; //피로도
 	int type; //1(PLAYER_STUDENT)이면 학생, 플레이어가 아니면 2(OTHER_STUDENT)
+	int isAttend;
+	int isWake;
 
 	char* name;
 } student;
@@ -55,6 +62,9 @@ typedef struct Day {
 	int attend_rate; //예상 출석률
 	int move; //행동력
 	int type;
+	int isSt; // 쪽지시험 공지되었는지
+	int isTp; // 팀플이 있는지
+
 	/*
 	//0. 일반 수업
 	//1. OT

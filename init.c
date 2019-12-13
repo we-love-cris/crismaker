@@ -1,4 +1,4 @@
-﻿#include "init.h"
+#include "init.h"
 
 status* init_status() {
 	status* game;
@@ -43,7 +43,10 @@ void make_status(status* game) {
 
 	game->db = (database*)malloc(sizeof(database));
 	make_database(game->db);
-
+	
+	for (i = 0; i < ACADEMIC_WEEK; i++) {
+		set_day(i, i, game->db, game->academic_calender);
+	}
 	return;
 }
 void make_student(student* std) {
@@ -55,6 +58,8 @@ void make_student(student* std) {
 	std->skill = 0;
 	std->tired = 0;
 	std->type = OTHER_STUDENT;
+	std->isAttend = 0;
+	std->isWake = 0;
 
 	std->name = NULL;
 
@@ -67,6 +72,10 @@ void make_player_p(player_p* choi) {
 	choi->progress = 0;
 	choi->test = 0;
 	choi->type = PLAYER_PROF;
+
+	choi->didWake = 0;
+	choi->didAnnSt = 0;
+	choi->didAnnTp = 0;
 
 	choi->name = NULL;
 
@@ -85,17 +94,24 @@ void make_day(day* wk) {
 	wk->attend_rate = 0;
 	wk->move = 0;
 	wk->type = 0;
+	wk->isSt = 0;
+	wk->isTp = 0;
 
 	return;
 }
 void make_database(database* db) {
+	int i = 0;
+
 	db->func_list.show_menu[0] = select_main_menu;
 	db->func_list.show_menu[1] = select_profvsstd;
 
 	db->func_list.screen_size[0] = menu_screen;//메뉴 선택 창(작음)
 	db->func_list.screen_size[1] = game_screen;//게임 창(큼)
 	
-	db->default_days = (day**)malloc(sizeof(day*) * ACAD_TYPES);
+	db->default_days = (day**)malloc(sizeof(day*) * ACADEMIC_WEEK);
+	for (i = 0; i < ACADEMIC_WEEK; i++) {
+		db->default_days[i] = (day*)malloc(sizeof(day));
+	}
 	make_default_days(db->default_days);
 
 	return;

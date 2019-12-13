@@ -1,6 +1,7 @@
-﻿#pragma once
+#pragma once
 #include "declare.h"
 #include "util.h"
+#include "view.h"
 
 typedef struct linked_list {
 	struct linked_list * prev;
@@ -17,7 +18,7 @@ int editing_file(int prev_number);
 ll* making_ll(ll* prev_line);
 void deleting_ll(ll* line);
 
-int making_file();
+int making_file(int prev_number, ll* nowline);
 
 int get_input();
 int char_delete(char* content, int at);
